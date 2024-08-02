@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import Banner from '../pagebanner/Banner';
 import { useNavigate } from "react-router-dom"
 import { BsArrowLeft } from "react-icons/bs";
