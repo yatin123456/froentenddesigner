@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import Banner from '../../pagebanner/Banner';
-
+import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 
 
@@ -95,6 +95,7 @@ function Read() {
                                                         <span className='block text-2xl font-bold text-cyan-500'>{eachData.point}</span>
                                                     </div>
                                                 </div>
+                                                <p className='text-white mt-2 text-sm'>DATE : - <span className='text-white opacity-45 font-light'>{eachData.currentDate}</span></p> 
                                                 <div>
                                                     <Link to="/update"><button className='rounded-sm hover:bg-cyan-600 transition py-1 border-r border-slate-600 text-sm text-white font-light w-1/2' onClick={() => setToLocalStorage(
                                                         eachData.id,

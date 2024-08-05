@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Banner from '../../pagebanner/Banner';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-
+import axios from 'axios'
 
 function Update() {
 
@@ -14,6 +14,7 @@ function Update() {
     const [point, setPoint] = useState("");
     const [position, setPosition] = useState();
     const [file, setFile] = useState();
+   
     const navigate = useNavigate();
     function handleChange(e) {
         setFile(URL.createObjectURL(e.target.files[0]));
