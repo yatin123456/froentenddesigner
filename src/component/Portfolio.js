@@ -33,8 +33,8 @@ function Portfolio() {
         </div>
         <div className='example_box'>
           <BsReverseListColumnsReverse className='text-3xl text-cyan-600 mx-auto mb-5' />
-          <h5 className='text-white font-semibold'>Counter</h5>
-          <button className='example_box-btn'>View Demo</button>
+          <h5 className='text-white font-semibold'>Shop</h5>
+          <button  onClick={() =>  navigate("/shop")} className='example_box-btn'>View Demo</button>
         </div>
         <div className='example_box'>
           <BsReverseListColumnsReverse className='text-3xl text-cyan-600 mx-auto mb-5' />
