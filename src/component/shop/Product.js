@@ -13,7 +13,7 @@ function Product(props) {
             <img className='' src={props.image} />
           <h5 className='text-white font-semibold'>{props.name}</h5>
           <p className='text-white'>Prise : {props.prise}</p>
-          <button   className='example_box-btn' onClick={e => dispatch(addItem({name: props.name}))}>Add To Cart</button>
+          <button   className='example_box-btn' onClick={e => dispatch(addItem({name: props.prise}))}>Add To Cart</button>
         </div>
        
     </>
