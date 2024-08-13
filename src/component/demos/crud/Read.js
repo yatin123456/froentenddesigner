@@ -75,7 +75,7 @@ function Read() {
 
                                         <div className='flex h-full'>
                                             <div className='p-1 w-1/3'>
-                                                <img className='rounded-md opacity-50' src={eachData.file} />
+                                                <img className='rounded-md ' src={eachData.file} />
                                             </div>
                                             <div className='ps-2 flex flex-col justify-between w-8/12'>
                                                 <div>
@@ -84,7 +84,7 @@ function Read() {
                                                     </div>
                                                     <h5 className='flex'><span className='text-white'>Email :  </span><span className='text-white opacity-50 font-light truncate block '> {eachData.email}</span></h5>
                                                     <div className='flex place-items-center'>
-                                                        <p className=''><span className='text-white'>Rank : </span><span className='text-white  font-semibold text-[12px] tracking-wider bg-cyan-900 rounded-sm px-2 '>{((eachData.id) > (eachData.point) ? '1' : ((eachData.point) < (eachData.id)) ? '1' : '')}</span></p>
+                                                        <p className=''><span className='text-white'>Rank : </span><span className='text-white  font-semibold text-[12px] tracking-wider bg-cyan-900 rounded-sm px-2 '>{(eachData.id) }</span></p>
                                                     </div>
                                                     {
                                                         (eachData.position) === 'active' ? (<p className='absolute right-4 -top-2 text-green-400 bg-green-900  w-fit text-[12px] rounded-md px-2  capitalize border font-semibold border-green-700'>Active</p>) : (<p className='absolute right-4 -top-2 text-rose-800 font-semibold bg-rose-400  w-fit text-[12px] rounded-md px-2  capitalize border border-rose-500'>Not-active</p>)
@@ -92,7 +92,8 @@ function Read() {
 
                                                     <div className=''>
                                                         <span className='text-white'>Total Earn Points : </span>
-                                                        <span className='block text-2xl font-bold text-cyan-500'>{eachData.point}</span>
+                                                        <span className='block text-2xl font-bold text-cyan-500'>{eachData.point} <span className={`text-sm text-gray-500 font-light ${!eachData.pool ? "hidden" : ""}`}>Point stacked</span></span>
+                                                       
                                                     </div>
                                                 </div>
                                                 <p className='text-white mt-2 text-sm'>DATE : - <span className='text-white opacity-45 font-light'>{eachData.currentDate}</span></p> 
@@ -117,7 +118,7 @@ function Read() {
                 )
                 }
 
-
+                <div className='my-3 text-end text-white'>Click here <Link to="/stackboard"><button className='ms-auto btn bg-cyan-600 py-1 px-4 rounded-full font-light text-white '>Stacking board</button></Link></div>
             </div>
         </>
     )

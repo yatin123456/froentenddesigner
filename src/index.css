@@ -65,3 +65,6 @@ body {
    padding: 10px 0;
    display: block;
 }
+.stck-bg{
+   background: linear-gradient(270deg, rgba(199, 142, 0, 0.3) 0%, rgba(199, 142, 0, 0) 100%);
+}

@@ -13,6 +13,7 @@ import Read from './component/demos/crud/Read';
 import Update from './component/demos/crud/Update';
 import Create from './component/demos/crud/Create';
 import Shop from './component/shop/Shop';
+import Stckboard from './component/demos/stckboard/Stckboard';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route  path="/read" element={<Read />}></Route>
             <Route  path="/update" element={<Update />}></Route>
             <Route  path="/shop" element={<Shop />}></Route>
+            <Route  path="/stackboard" element={<Stckboard />}></Route>
           </Routes>
           <Footer/>
         </BrowserRouter>
