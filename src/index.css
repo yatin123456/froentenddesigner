@@ -68,3 +68,6 @@ body {
 .stck-bg{
    background: linear-gradient(270deg, rgba(199, 142, 0, 0.3) 0%, rgba(199, 142, 0, 0) 100%);
 }
+.stck-bg2{
+   background: linear-gradient(270deg, rgba(25, 190, 205, 0.3) 0%, rgba(25, 190, 205, 0) 100%);
+}
