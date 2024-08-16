@@ -14,13 +14,15 @@ function Read() {
     const getDefultto = () => {getDvalue('notactive')}
     const getDall = () => {getDvalue('')}
     
-    const setToLocalStorage = (id, email, name, point, position, file) => {
+    const setToLocalStorage = (id, email, name, point, position, file,stack, stackYes ) => {
         localStorage.setItem("id", id);
         localStorage.setItem("email", email);
         localStorage.setItem("name", name);
         localStorage.setItem("point", point);   
         localStorage.setItem("position", position);
         localStorage.setItem("file", file);
+        localStorage.setItem("stack", stack);
+        localStorage.setItem("stackYes", stackYes);
 
     }
     const handleDelet = (id) => {
@@ -105,7 +107,9 @@ function Read() {
                                                         eachData.name,
                                                         eachData.point,
                                                         eachData.position,
-                                                        eachData.file
+                                                        eachData.file,
+                                                        eachData.stackYes,
+                                                        eachData.stack
                                                     )} >Edit</button></Link>
                                                     <button onClick={() => handleDelet(eachData.id)} className='rounded-sm hover:bg-cyan-600 transition py-1 text-sm w-1/2 text-white font-light'>Remove</button>
                                                 </div>

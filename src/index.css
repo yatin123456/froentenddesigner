@@ -11,13 +11,12 @@
       @apply border-slate-300 border-solid border text-sm rounded-full text-white bg-gray-800 hover:bg-slate-300 hover:text-black ease-in-out duration-300
    }
 
-   .example_box{
-      @apply  rounded-xl p-4 bg-zinc-800 text-center  border  border-zinc-700 hover:border-cyan-600 hover:shadow-2xl 
-   
+   .example_box {
+      @apply rounded-xl p-4 bg-zinc-800 text-center border border-zinc-700 hover:border-cyan-600 hover:shadow-2xl
    }
-   .example_box-btn{
-      @apply mt-2 rounded-full border-cyan-600 border py-2 px-5 text-xs text-white font-semibold hover:bg-cyan-600 transition 
-      
+
+   .example_box-btn {
+      @apply mt-2 rounded-full border-cyan-600 border py-2 px-5 text-xs text-white font-semibold hover:bg-cyan-600 transition
    }
 }
 
@@ -32,42 +31,59 @@ body {
    background-color: #222222;
 
 }
+
 .poppins-regular {
    font-family: "Poppins", sans-serif;
    font-weight: 400;
    font-style: normal;
 }
 
-.spiner{
+.spiner {
    width: 200px;
    height: 200px;
    opacity: 0.3;
    left: -8%;
    transform: rotate(225deg);
 }
-.spiner2{
+
+.spiner2 {
    width: 200px;
    height: 200px;
    opacity: 0.3;
    right: -8%;
    transform: rotate(225deg);
 }
+
 @keyframes spin {
    from {
-       transform:rotate(0deg);
+      transform: rotate(0deg);
    }
+
    to {
-       transform:rotate(360deg);
+      transform: rotate(360deg);
    }
 }
-.c_bar a{
+
+.c_bar a {
    width: 100%;
    padding: 10px 0;
    display: block;
 }
-.stck-bg{
+
+.stck-bg {
    background: linear-gradient(270deg, rgba(199, 142, 0, 0.3) 0%, rgba(199, 142, 0, 0) 100%);
 }
-.stck-bg2{
+
+.stck-bg2 {
    background: linear-gradient(270deg, rgba(25, 190, 205, 0.3) 0%, rgba(25, 190, 205, 0) 100%);
+}
+
+.ex-box-custome {
+   background: rgba( 255, 255, 255, 0 );
+   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+   backdrop-filter: blur( 20px );
+   -webkit-backdrop-filter: blur( 20px );
+   border-radius: 10px;
+   border: 1px solid rgba( 255, 255, 255, 0.18 );
+   
 }

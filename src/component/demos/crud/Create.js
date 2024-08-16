@@ -53,7 +53,7 @@ function Create() {
         })
         axios.post(
             "https://667eaaa0f2cb59c38dc69de2.mockapi.io/mycrudeapp", {
-                point: point, pool: pool
+                point: point, pool: pool, stackYes: stackYes
         })
             .then(() => {
                 history('/read')
@@ -121,10 +121,10 @@ function Create() {
                                     <select className='bg-zinc-800 border border-zinc-700 px-2 py-1 rounded w-full text-white' value={pool} id='pool' name='pool' onChange={(e) => setPool(e.target.value)}>
                                         <option value="">Select</option>
                                         <option value="TaskOnNFT">TaskOn NFT (+20.0% APR)</option>
-                                        <option value="TaskOnNFT">TaskOn NFT (+24% APR)</option>
+                                        <option value="TaskOnNFT2">TaskOn NFT (+24% APR)</option>
                                         <option value="LockedPro+">Locked Pro+ (+20.0% APR)</option>
                                         <option value="LockedStarter+">Locked Starter+ (+12.0% APR)</option>
-                                        <option value="LockedStarter+">Locked Starter+ (+14.0% APR)</option>
+                                        <option value="LockedStarter+2">Locked Starter+ (+14.0% APR)</option>
                                         <option value="LockedGainer+">Locked Gainer+ (+16.0% APR)</option>
                                         <option value="FluidPro">Fluid Pro (+6.0% APR)</option>
                                         <option value="FluidStarter">Fluid Starter (+2.1% APR)</option>

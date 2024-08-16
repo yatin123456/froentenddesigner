@@ -13,9 +13,17 @@ function Update() {
     const [email, setEmail] = useState("");
     const [point, setPoint] = useState("");
     const [position, setPosition] = useState();
+    const [stack, setStacks] = useState();
+    const [stackYes, setStackYes] = useState();
     const [file, setFile] = useState();
    
     const navigate = useNavigate();
+    function setNo() {
+       
+    }
+    function setYes() {
+       
+    }
     function handleChange(e) {
         setFile(URL.createObjectURL(e.target.files[0]));
     }
@@ -26,17 +34,26 @@ function Update() {
         setPoint(localStorage.getItem("point"));
         setPosition(localStorage.getItem("position"));
         setFile(localStorage.getItem("file"));
+        setStacks(localStorage.getItem("stack"));
+        setStackYes(localStorage.getItem("stackYes"));
 
     }, []);
 
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        axios.put(`https://667eaaa0f2cb59c38dc69de2.mockapi.io/finaldata/${id}`,
+        axios.put(`https://667eaaa0f2cb59c38dc69de2.mockapi.io/finaldata/${id}`  ,
+          
             {
-                name: name, email: email, point: point, position: position, file: file
-            }
-        ).then(() => {
+                name: name, email: email, point: point, position: position, file: file, stackYes: stackYes
+            },
+       
+        )
+        axios.put(`https://667eaaa0f2cb59c38dc69de2.mockapi.io/mycrudeapp/${id}`,
+        {
+            point: point, stackYes: stackYes
+        },)
+        .then(() => {
             navigate("/read")
         })
         toast.success('Updated suscessfully');
@@ -74,6 +91,16 @@ function Update() {
                                         <option value="notactive">Not Active</option>
 
                                     </select>
+                                </div>
+                            </div>
+                            <div className='flex'>
+                                <div>
+                                    <input className='' type='checkbox' checked={stack} onChange={setNo} />
+                                    <span className='text-white ps-3'>No</span>
+                                </div>
+                                <div className='ms-3'>
+                                    <input className='' type='checkbox' checked={stackYes} onChange={setYes} />
+                                    <span className='text-white ps-3'>Yes</span>
                                 </div>
                             </div>
 
