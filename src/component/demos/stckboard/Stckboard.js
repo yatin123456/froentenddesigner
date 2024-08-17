@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 function Stckboard() {
 
@@ -28,15 +29,15 @@ function Stckboard() {
             .then(data => {
                 setData(data);
                 const item = data;
-                const filtered = data.filter(item => item.pool == 'TaskOnNFT' ||  item.stackYes === 'true');
-                const filtered2 = data.filter(item => item.pool == 'TaskOnNFT2' || item.stackYes === 'true');
-                const filtered3 = data.filter(item => item.pool == 'LockedPro+' || item.stackYes === 'true');
-                const filtered4 = data.filter(item => item.pool == 'LockedStarter+' || item.stackYes === 'true');
-                const filtered5 = data.filter(item => item.pool == 'LockedStarter+2' || item.stackYes === 'true');
-                const filtered6 = data.filter(item => item.pool == 'LockedGainer+' || item.stackYes === 'true');
-                const filtered7 = data.filter(item => item.pool == 'FluidPro' || item.stackYes === 'true');
-                const filtered8 = data.filter(item => item.pool == 'FluidStarter' || item.stackYes === 'true');
-                const filtered9 = data.filter(item => item.pool == 'FluidGainer'  || item.stackYes === 'true');
+                const filtered = data.filter(item => item.pool == 'TaskOnNFT' && item.stack === 'true');
+                const filtered2 = data.filter(item => item.pool == 'TaskOnNFT2' && item.stack === 'true');
+                const filtered3 = data.filter(item => item.pool == 'LockedPro+' && item.stack === 'true');
+                const filtered4 = data.filter(item => item.pool == 'LockedStarter+' && item.stack === 'true');
+                const filtered5 = data.filter(item => item.pool == 'LockedStarter+2' && item.stack === 'true');
+                const filtered6 = data.filter(item => item.pool == 'LockedGainer+' && item.stack === 'true');
+                const filtered7 = data.filter(item => item.pool == 'FluidPro' && item.stack === 'true');
+                const filtered8 = data.filter(item => item.pool == 'FluidStarter' && item.stack === 'true');
+                const filtered9 = data.filter(item => item.pool == 'FluidGainer' && item.stack === 'true');
 
                 if (Array.isArray(filtered)) {
                     const totalSum = filtered.reduce((acc, item) => acc + (Number(item.point,) || 0), 0);
@@ -87,6 +88,7 @@ function Stckboard() {
                 ) : (
                     <p>Loading...</p>
                 )} */}
+                <Link to="/read"><button className="btn bg-cyan-600 py-1 mb-3 px-4 rounded-full font-light text-white flex place-items-center  ">Go Back</button></Link>
                 <h3 className='text-white font-bold text-xl mb-5'>Open pools</h3>
                 <div className='grid grid-rows-1 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 sm:gap-8 gap-4'>
 
@@ -111,7 +113,7 @@ function Stckboard() {
                                 </div>
 
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`bg-green-500 h-1`} style={{ width: sum / 50000 * 100 }}></div>
+                                    <div className={`bg-green-500 h-1`} style={{ width: sum / 50000 * 100 + '%'}}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>${sum}  / 50000 </p>
@@ -141,7 +143,7 @@ function Stckboard() {
                                 </div>
 
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className='bg-green-500  h-1' style={{ width: sum2 / 50000 * 100 }}></div>
+                                    <div className='bg-green-500  h-1' style={{ width: sum2 / 50000 * 100 + '%'}}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>$ {sum2}  / 50000 </p>
@@ -172,7 +174,7 @@ function Stckboard() {
                                 </div>
 
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className='bg-green-500  h-1' style={{ width: sum3 / 50000 * 100 }}></div>
+                                    <div className='bg-green-500  h-1' style={{ width: sum3 / 50000 * 100 + '%'}}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>$ {sum3}  / 50000 </p>
@@ -200,9 +202,8 @@ function Stckboard() {
                                     <p className='text-gray-400 text-md'>Pool occupancy </p>
                                     <span className='text-gray-400 text-sm block'>{(sum4 / 50000 * 100).toFixed(2)}%</span>
                                 </div>
-
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className='bg-green-500  h-1' style={{ width: sum4 / 50000 * 100 }}></div>
+                                    <div className='bg-green-500  h-1' style={{ width: sum4 / 50000 * 100 + '%'}}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>$ {sum4}  / 50000 </p>
@@ -230,9 +231,8 @@ function Stckboard() {
                                     <p className='text-gray-400 text-md'>Pool occupancy </p>
                                     <span className='text-gray-400 text-sm block'>{(sum5 / 50000 * 100).toFixed(2)}%</span>
                                 </div>
-
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className='bg-green-500  h-1' style={{ width: sum5 / 50000 * 100 }}></div>
+                                    <div className='bg-green-500  h-1' style={{ width: sum5 / 50000 * 100 + '%'}}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>$ {sum5}  / 50000 </p>
@@ -260,9 +260,8 @@ function Stckboard() {
                                     <p className='text-gray-400 text-md'>Pool occupancy </p>
                                     <span className='text-gray-400 text-sm block'>{(sum6 / 50000 * 100).toFixed(2)}%</span>
                                 </div>
-
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className='bg-green-500  h-1' style={{ width: sum6 / 50000 * 100 }}></div>
+                                    <div className='bg-green-500  h-1' style={{ width: sum6 / 50000 * 100 + '%'}}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>$ {sum6}  / 50000 </p>
@@ -286,17 +285,16 @@ function Stckboard() {
                                 <div className={`${(sum7 == 50000 || sum7 > 50000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
                                     <p className='m-auto text-white'>Pool is Full</p>
                                 </div>
-                            <div className=' flex place-content-between'>
-                                <p className='text-gray-400 text-md'>Pool occupancy </p>
-                                <span className='text-gray-400 text-sm block'>{(sum7 / 50000 * 100).toFixed(2)}%</span>
-                            </div>
-
-                            <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                <div className='bg-green-500  h-1' style={{ width: sum7 / 50000 * 100 }}></div>
-                            </div>
-                            <div className='flex mt-2'>
-                                <p className='text-gray-400 text-md'>$ {sum7}  / 50000  </p>
-                            </div>
+                                <div className=' flex place-content-between'>
+                                    <p className='text-gray-400 text-md'>Pool occupancy </p>
+                                    <span className='text-gray-400 text-sm block'>{(sum7 / 50000 * 100).toFixed(2)}%</span>
+                                </div>
+                                <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
+                                    <div className='bg-green-500  h-1' style={{ width: sum7 / 50000 * 100 + '%'}}></div>
+                                </div>
+                                <div className='flex mt-2'>
+                                    <p className='text-gray-400 text-md'>$ {sum7}  / 50000  </p>
+                                </div>
                             </div>
                             <button className='example_box-btn w-full'>View Demo</button>
                         </div>
@@ -316,17 +314,16 @@ function Stckboard() {
                                 <div className={`${(sum8 == 50000 || sum8 > 50000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
                                     <p className='m-auto text-white'>Pool is Full</p>
                                 </div>
-                            <div className=' flex place-content-between'>
-                                <p className='text-gray-400 text-md'>Pool occupancy </p>
-                                <span className='text-gray-400 text-sm block'>{(sum8 / 50000 * 100).toFixed(2)}%</span>
-                            </div>
-
-                            <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                <div className='bg-green-500  h-1' style={{ width: sum8 / 50000 * 100 }}></div>
-                            </div>
-                            <div className='flex mt-2'>
-                                <p className='text-gray-400 text-md'>$ {sum8}  / 50000</p>
-                            </div>
+                                <div className=' flex place-content-between'>
+                                    <p className='text-gray-400 text-md'>Pool occupancy </p>
+                                    <span className='text-gray-400 text-sm block'>{(sum8 / 50000 * 100).toFixed(2)}%</span>
+                                </div>
+                                <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
+                                    <div className='bg-green-500  h-1' style={{ width: sum8 / 50000 * 100 + '%'}}></div>
+                                </div>
+                                <div className='flex mt-2'>
+                                    <p className='text-gray-400 text-md'>$ {sum8}  / 50000</p>
+                                </div>
                             </div>
                             <button className='example_box-btn w-full'>View Demo</button>
                         </div>
@@ -346,17 +343,16 @@ function Stckboard() {
                                 <div className={`${(sum9 == 50000 || sum9 > 50000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
                                     <p className='m-auto text-white'>Pool is Full</p>
                                 </div>
-                            <div className=' flex place-content-between'>
-                                <p className='text-gray-400 text-md'>Pool occupancy </p>
-                                <span className='text-gray-400 text-sm block'>{(sum9 / 50000 * 100).toFixed(2)}%</span>
-                            </div>
-
-                            <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                <div className='bg-green-500  h-1' style={{ width: sum9 / 50000 * 100 }}></div>
-                            </div>
-                            <div className='flex mt-2'>
-                                <p className='text-gray-400 text-md'>$ {sum9}  / 50000 </p>
-                            </div>
+                                <div className=' flex place-content-between'>
+                                    <p className='text-gray-400 text-md'>Pool occupancy </p>
+                                    <span className='text-gray-400 text-sm block'>{(sum9 / 50000 * 100).toFixed(2)}%</span>
+                                </div>
+                                <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
+                                    <div className='bg-green-500  h-1' style={{ width: sum9 / 50000 * 100  + '%'}}></div>
+                                </div>
+                                <div className='flex mt-2'>
+                                    <p className='text-gray-400 text-md'>$ {sum9}  / 50000 </p>
+                                </div>
                             </div>
                             <button className='example_box-btn w-full'>View Demo</button>
                         </div>

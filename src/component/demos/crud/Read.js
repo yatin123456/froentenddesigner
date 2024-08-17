@@ -14,7 +14,7 @@ function Read() {
     const getDefultto = () => {getDvalue('notactive')}
     const getDall = () => {getDvalue('')}
     
-    const setToLocalStorage = (id, email, name, point, position, file,stack, stackYes ) => {
+    const setToLocalStorage = (id, email, name, point, position, file ,stack , pool ) => {
         localStorage.setItem("id", id);
         localStorage.setItem("email", email);
         localStorage.setItem("name", name);
@@ -22,7 +22,7 @@ function Read() {
         localStorage.setItem("position", position);
         localStorage.setItem("file", file);
         localStorage.setItem("stack", stack);
-        localStorage.setItem("stackYes", stackYes);
+        localStorage.setItem("pool", pool);
 
     }
     const handleDelet = (id) => {
@@ -95,7 +95,7 @@ function Read() {
 
                                                     <div className=''>
                                                         <span className='text-white'>Total Earn Points : </span>
-                                                        <span className='block text-2xl font-bold text-cyan-500'>{eachData.point} <span className={`text-sm text-gray-500 font-light ${!eachData.pool ? "hidden" : ""}`}>Point stacked</span></span>
+                                                        <span className='block text-2xl font-bold text-cyan-500'>{eachData.point} <span className={`text-sm text-gray-500 font-light ${(eachData.stack === 'true') ? "" : "hidden"}`}>Point stacked</span></span>
                                                        
                                                     </div>
                                                 </div>
@@ -108,8 +108,8 @@ function Read() {
                                                         eachData.point,
                                                         eachData.position,
                                                         eachData.file,
-                                                        eachData.stackYes,
-                                                        eachData.stack
+                                                        eachData.stack,
+                                                        eachData.pool
                                                     )} >Edit</button></Link>
                                                     <button onClick={() => handleDelet(eachData.id)} className='rounded-sm hover:bg-cyan-600 transition py-1 text-sm w-1/2 text-white font-light'>Remove</button>
                                                 </div>
