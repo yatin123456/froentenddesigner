@@ -14,7 +14,7 @@ function Read() {
     const getDefultto = () => {getDvalue('notactive')}
     const getDall = () => {getDvalue('')}
     
-    const setToLocalStorage = (id, email, name, point, position, file ,stack , pool ) => {
+    const setToLocalStorage = (id, email, name, point, position, file ,stack , pool, percentage ) => {
         localStorage.setItem("id", id);
         localStorage.setItem("email", email);
         localStorage.setItem("name", name);
@@ -23,6 +23,7 @@ function Read() {
         localStorage.setItem("file", file);
         localStorage.setItem("stack", stack);
         localStorage.setItem("pool", pool);
+        localStorage.setItem("percentage", percentage);
 
     }
     const handleDelet = (id) => {
@@ -109,7 +110,8 @@ function Read() {
                                                         eachData.position,
                                                         eachData.file,
                                                         eachData.stack,
-                                                        eachData.pool
+                                                        eachData.pool,
+                                                        eachData.percentage
                                                     )} >Edit</button></Link>
                                                     <button onClick={() => handleDelet(eachData.id)} className='rounded-sm hover:bg-cyan-600 transition py-1 text-sm w-1/2 text-white font-light'>Remove</button>
                                                 </div>

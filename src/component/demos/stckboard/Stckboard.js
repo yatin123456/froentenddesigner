@@ -40,39 +40,39 @@ function Stckboard() {
                 const filtered9 = data.filter(item => item.pool == 'FluidGainer' && item.stack === 'true');
 
                 if (Array.isArray(filtered)) {
-                    const totalSum = filtered.reduce((acc, item) => acc + (Number(item.point,) || 0), 0);
+                    const totalSum = filtered.reduce((acc, item) => acc + (Number(item.point / 100 * item.percentage) || 0), 0);
                     setSum(totalSum);
                 }
                 if (Array.isArray(filtered2)) {
-                    const totalSum2 = filtered2.reduce((acc, item) => acc + (Number(item.point,) || 0), 0);
+                    const totalSum2 = filtered2.reduce((acc, item) => acc + (Number(item.point / 100 * item.percentage) || 0), 0);
                     setSum2(totalSum2);
                 }
                 if (Array.isArray(filtered3)) {
-                    const totalSum3 = filtered3.reduce((acc, item) => acc + (Number(item.point,) || 0), 0);
+                    const totalSum3 = filtered3.reduce((acc, item) => acc + (Number(item.point / 100 * item.percentage) || 0), 0);
                     setSum3(totalSum3);
                 }
                 if (Array.isArray(filtered4)) {
-                    const totalSum4 = filtered4.reduce((acc, item) => acc + (Number(item.point,) || 0), 0);
+                    const totalSum4 = filtered4.reduce((acc, item) => acc + (Number(item.point / 100 * item.percentage) || 0), 0);
                     setSum4(totalSum4);
                 }
                 if (Array.isArray(filtered5)) {
-                    const totalSum5 = filtered5.reduce((acc, item) => acc + (Number(item.point,) || 0), 0);
+                    const totalSum5 = filtered5.reduce((acc, item) => acc + (Number(item.point / 100 * item.percentage) || 0), 0);
                     setSum5(totalSum5);
                 }
                 if (Array.isArray(filtered6)) {
-                    const totalSum6 = filtered6.reduce((acc, item) => acc + (Number(item.point,) || 0), 0);
+                    const totalSum6 = filtered6.reduce((acc, item) => acc + (Number(item.point / 100 * item.percentage) || 0), 0);
                     setSum6(totalSum6);
                 }
                 if (Array.isArray(filtered7)) {
-                    const totalSum7 = filtered7.reduce((acc, item) => acc + (Number(item.point,) || 0), 0);
+                    const totalSum7 = filtered7.reduce((acc, item) => acc + (Number(item.point / 100 * item.percentage) || 0), 0);
                     setSum7(totalSum7);
                 }
                 if (Array.isArray(filtered8)) {
-                    const totalSum8 = filtered8.reduce((acc, item) => acc + (Number(item.point,) || 0), 0);
+                    const totalSum8 = filtered8.reduce((acc, item) => acc + (Number(item.point / 100 * item.percentage) || 0), 0);
                     setSum8(totalSum8);
                 }
                 if (Array.isArray(filtered9)) {
-                    const totalSum9 = filtered9.reduce((acc, item) => acc + (Number(item.point,) || 0), 0);
+                    const totalSum9 = filtered9.reduce((acc, item) => acc + (Number(item.point / 100 * item.percentage) || 0), 0);
                     setSum9(totalSum9);
                 }
             })
@@ -113,13 +113,13 @@ function Stckboard() {
                                 </div>
 
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`bg-green-500 h-1`} style={{ width: sum / 50000 * 100 + '%'}}></div>
+                                <div className={`bg-green-500  h-1 ${(sum / 60000 * 100 < 15) ? 'bg-blue-700' : (sum / 60000 * 100 > 50 || sum / 60000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum / 60000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>${sum}  / 50000 </p>
+                                    <p className='text-gray-400 text-md'>${sum}  / 60000 </p>
                                 </div>
                             </div>
-                            <button className='example_box-btn w-full'>View Demo</button>
+                           <Link to='/allparticipent'><button className='example_box-btn w-full'>View All</button></Link> 
                         </div>
                     </div>
                     <div className='example_box text-start p-0 overflow-hidden'>
@@ -143,13 +143,13 @@ function Stckboard() {
                                 </div>
 
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className='bg-green-500  h-1' style={{ width: sum2 / 50000 * 100 + '%'}}></div>
+                                <div className={`bg-green-500  h-1 ${(sum2 / 15000  * 100 < 15) ? 'bg-blue-700' : (sum2 / 15000  * 100 > 50 || sum2 / 15000  * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum2 / 15000  * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum2}  / 50000 </p>
+                                    <p className='text-gray-400 text-md'>$ {sum2}  / 15000 </p>
                                 </div>
                             </div>
-                            <button className='example_box-btn w-full'>View Demo</button>
+                            <button className='example_box-btn w-full'>View All</button>
                         </div>
                     </div>
 
@@ -174,13 +174,13 @@ function Stckboard() {
                                 </div>
 
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className='bg-green-500  h-1' style={{ width: sum3 / 50000 * 100 + '%'}}></div>
+                                <div className={`bg-green-500  h-1 ${(sum3 / 45000 * 100 < 15) ? 'bg-blue-700' : (sum3 / 45000 * 100 > 50 || sum3 / 45000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum3 / 45000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum3}  / 50000 </p>
+                                    <p className='text-gray-400 text-md'>$ {sum3}  / 45000 </p>
                                 </div>
                             </div>
-                            <button className='example_box-btn w-full'>View Demo</button>
+                            <button className='example_box-btn w-full'>View All</button>
                         </div>
                     </div>
                     <div className='example_box text-start p-0 overflow-hidden'>
@@ -203,13 +203,13 @@ function Stckboard() {
                                     <span className='text-gray-400 text-sm block'>{(sum4 / 50000 * 100).toFixed(2)}%</span>
                                 </div>
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className='bg-green-500  h-1' style={{ width: sum4 / 50000 * 100 + '%'}}></div>
+                                    <div className={`bg-green-500  h-1 ${(sum4 / 60000 * 100 < 15) ? 'bg-blue-700' : (sum4 / 60000 * 100 > 50 || sum4 / 60000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum4 / 60000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum4}  / 50000 </p>
+                                    <p className='text-gray-400 text-md'>$ {sum4}  / 60000 </p>
                                 </div>
                             </div>
-                            <button className='example_box-btn w-full'>View Demo</button>
+                            <button className='example_box-btn w-full'>View All</button>
                         </div>
                     </div>
                     <div className='example_box text-start p-0 overflow-hidden'>
@@ -232,13 +232,13 @@ function Stckboard() {
                                     <span className='text-gray-400 text-sm block'>{(sum5 / 50000 * 100).toFixed(2)}%</span>
                                 </div>
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className='bg-green-500  h-1' style={{ width: sum5 / 50000 * 100 + '%'}}></div>
+                                    <div className={`bg-green-500  h-1 ${(sum4 / 60000 * 100 < 15) ? 'bg-blue-700' : (sum4 / 60000 * 100 > 50 || sum4 / 60000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum4 / 60000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum5}  / 50000 </p>
+                                    <p className='text-gray-400 text-md'>$ {sum5}  / 60000 </p>
                                 </div>
                             </div>
-                            <button className='example_box-btn w-full'>View Demo</button>
+                            <button className='example_box-btn w-full'>View All</button>
                         </div>
                     </div>
                     <div className='example_box text-start p-0 overflow-hidden'>
@@ -261,13 +261,13 @@ function Stckboard() {
                                     <span className='text-gray-400 text-sm block'>{(sum6 / 50000 * 100).toFixed(2)}%</span>
                                 </div>
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className='bg-green-500  h-1' style={{ width: sum6 / 50000 * 100 + '%'}}></div>
+                                    <div className={`bg-green-500  h-1 ${(sum6 / 60000 * 100 < 15) ? 'bg-blue-700' : (sum6 / 60000 * 100 > 50 || sum6 / 60000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum6 / 60000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum6}  / 50000 </p>
+                                    <p className='text-gray-400 text-md'>$ {sum6}  / 60000 </p>
                                 </div>
                             </div>
-                            <button className='example_box-btn w-full'>View Demo</button>
+                            <button className='example_box-btn w-full'>View All</button>
                         </div>
                     </div>
                     <div className='example_box text-start p-0 overflow-hidden'>
@@ -290,13 +290,13 @@ function Stckboard() {
                                     <span className='text-gray-400 text-sm block'>{(sum7 / 50000 * 100).toFixed(2)}%</span>
                                 </div>
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className='bg-green-500  h-1' style={{ width: sum7 / 50000 * 100 + '%'}}></div>
+                                    <div className={`bg-green-500  h-1 ${(sum7 / 10000 * 100 < 15) ? 'bg-blue-700' : (sum7 / 10000 * 100 > 50 || sum7 / 10000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum7 / 10000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum7}  / 50000  </p>
+                                    <p className='text-gray-400 text-md'>$ {sum7}  / 10000  </p>
                                 </div>
                             </div>
-                            <button className='example_box-btn w-full'>View Demo</button>
+                            <button className='example_box-btn w-full'>View All</button>
                         </div>
                     </div>
                     <div className='example_box text-start p-0 overflow-hidden'>
@@ -319,13 +319,13 @@ function Stckboard() {
                                     <span className='text-gray-400 text-sm block'>{(sum8 / 50000 * 100).toFixed(2)}%</span>
                                 </div>
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className='bg-green-500  h-1' style={{ width: sum8 / 50000 * 100 + '%'}}></div>
+                                    <div className={`bg-green-500  h-1 ${(sum8 / 1000000 * 100 < 15) ? 'bg-blue-700' : (sum8 / 1000000 * 100 > 50 || sum8 / 1000000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum8 / 1000000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum8}  / 50000</p>
+                                    <p className='text-gray-400 text-md'>$ {sum8}  / 1000000</p>
                                 </div>
                             </div>
-                            <button className='example_box-btn w-full'>View Demo</button>
+                            <button className='example_box-btn w-full'>View All</button>
                         </div>
                     </div>
                     <div className='example_box text-start p-0 overflow-hidden'>
@@ -339,25 +339,26 @@ function Stckboard() {
                             <div className='flex mt-3'>
                                 <p className='text-white text-xl font-semibold'>+35.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
                             </div>
-                            <div className={`${(sum9 == 50000 || sum9 > 50000) ? 'opacity-50 relative' : ''}`}>
-                                <div className={`${(sum9 == 50000 || sum9 > 50000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
+                            <div className={`${(sum9 == 1000000 || sum9 > 1000000) ? 'opacity-50 relative' : ''}`}>
+                                <div className={`${(sum9 == 1000000 || sum9 > 1000000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
                                     <p className='m-auto text-white'>Pool is Full</p>
                                 </div>
                                 <div className=' flex place-content-between'>
                                     <p className='text-gray-400 text-md'>Pool occupancy </p>
-                                    <span className='text-gray-400 text-sm block'>{(sum9 / 50000 * 100).toFixed(2)}%</span>
+                                    <span className='text-gray-400 text-sm block'>{(sum9 / 1000000 * 100).toFixed(2)}%</span>
                                 </div>
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className='bg-green-500  h-1' style={{ width: sum9 / 50000 * 100  + '%'}}></div>
+                                    <div className={`bg-green-500  h-1 ${(sum9 / 1000000 * 100 < 15) ? 'bg-blue-700' : (sum9 / 1000000 * 100 > 50 || sum9 / 1000000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum9 / 1000000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum9}  / 50000 </p>
+                                    <p className='text-gray-400 text-md'>$ {sum9}  / 1000000 </p>
                                 </div>
                             </div>
-                            <button className='example_box-btn w-full'>View Demo</button>
+                            <button className='example_box-btn w-full'>View All</button>
                         </div>
                     </div>
                 </div>
+                <h3 className='text-white font-bold text-xl my-5'>Close pools</h3>
             </div>
         </>
     )

@@ -14,6 +14,7 @@ import Update from './component/demos/crud/Update';
 import Create from './component/demos/crud/Create';
 import Shop from './component/shop/Shop';
 import Stckboard from './component/demos/stckboard/Stckboard';
+import Allparticipent from './component/demos/stckboard/Allparticipent'
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route  path="/update" element={<Update />}></Route>
             <Route  path="/shop" element={<Shop />}></Route>
             <Route  path="/stackboard" element={<Stckboard />}></Route>
+            <Route  path="/allparticipent" element={<Allparticipent />}></Route>
           </Routes>
           <Footer/>
         </BrowserRouter>

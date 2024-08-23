@@ -16,7 +16,10 @@ function Update() {
     const [stack, setStack] = useState("");
     const [file, setFile] = useState();
     const [pool, setPool] = useState("")
-
+    const [percentage, setPercentage] = useState();
+    const handleCheckboxChange = (event) => {
+        setPercentage(event.target.value);
+    };
     const navigate = useNavigate();
     function handleChange(e) {
         setFile(URL.createObjectURL(e.target.files[0]));
@@ -30,6 +33,7 @@ function Update() {
         setFile(localStorage.getItem("file"));
         setPool(localStorage.getItem("pool"));
         setStack(localStorage.getItem("stack"));
+        setPercentage(localStorage.getItem("percentage"));
 
 
     }, []);
@@ -39,13 +43,13 @@ function Update() {
         e.preventDefault();
         axios.put(`https://667eaaa0f2cb59c38dc69de2.mockapi.io/finaldata/${id}`,
             {
-                name: name, email: email, point: point, position: position, file: file, pool: pool, stack: stack
+                name: name, email: email, point: point, position: position, file: file, pool: pool, stack: stack,percentage: percentage
             },
 
         )
         axios.put(`https://667eaaa0f2cb59c38dc69de2.mockapi.io/mycrudeapp/${id}`,
             {
-                point: point, stack: stack, pool: pool
+                point: point, stack: stack, pool: pool,percentage:percentage
             },)
             .then(() => {
                 navigate("/read")
@@ -123,6 +127,66 @@ function Update() {
                                                     <option value="FluidStarter">Fluid Starter (+2.1% APR)</option>
                                                     <option value="FluidGainer">Fluid Gainer (+401% APR)</option>
                                                 </select>
+                                                <div className=''>
+
+                                                    < label className='block text-white pt-4 pb-1'>You stack your coin  </label>
+                                                    <div className='flex'>
+                                                        <div className='border border-slate-600 rounded-sm h-8 flex w-1/4'>
+                                                            <div className={`flex relative w-full ${(percentage === '10') ? 'bg-cyan-600' : ''}`}>
+                                                                <input
+                                                                    type="checkbox"
+                                                                    value="10"
+                                                                    checked={percentage === '10'}
+                                                                    onChange={handleCheckboxChange}
+                                                                    className='w-full h-8  opacity-0 absolute left-0 top-0'
+                                                                />
+                                                                <span className='m-auto text-white'>10%</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className='border border-slate-600 rounded-sm h-8 flex w-1/4'>
+                                                            <div className={`flex relative w-full ${(percentage === '50') ? 'bg-cyan-600' : ''}`}>
+                                                                <input
+                                                                    type="checkbox"
+                                                                    value="50"
+                                                                    checked={percentage === '50'}
+                                                                    onChange={handleCheckboxChange}
+                                                                    className='w-full h-8  opacity-0 absolute left-0 top-0'
+                                                                />
+                                                                <span className='m-auto text-white'>50%</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className='border border-slate-600 rounded-sm h-8 flex w-1/4'>
+                                                            <div className={`flex relative w-full ${(percentage === '75') ? 'bg-cyan-600' : ''}`}>
+                                                                <input
+                                                                    type="checkbox"
+                                                                    value="75"
+                                                                    checked={percentage === '75'}
+                                                                    onChange={handleCheckboxChange}
+                                                                    className='w-full h-8  opacity-0 absolute left-0 top-0'
+                                                                />
+                                                                <span className='m-auto text-white'>75%</span>
+                                                            </div>
+                                                        </div>
+                                                        <div className='border border-slate-600 rounded-sm h-8 flex w-1/4'>
+                                                            <div className={`flex relative w-full ${(percentage === '100') ? 'bg-cyan-600' : ''}`}>
+                                                                <input
+                                                                    type="checkbox"
+                                                                    value="100"
+                                                                    checked={percentage === '100'}
+                                                                    onChange={handleCheckboxChange}
+                                                                    className='w-full h-8  opacity-0 absolute left-0 top-0'
+                                                                />
+                                                                <span className='m-auto text-white'>100%</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className=''>
+                                                        <p className='text-gray-400 text-sm '>You have stack your <span className='text-orange-400' >
+                                                            {(point / 100 * percentage)}</span> coin</p>
+                                                    </div>
+                                                </div>
                                             </>
                                         ) : ""}
                                     </>

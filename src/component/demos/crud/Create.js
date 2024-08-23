@@ -21,10 +21,11 @@ function Create() {
     const [stack, setStack] = useState();
     const [currentDate, setCurrentDate] = useState(getDate());
     const [percentage, setPercentage] = useState(null);
+    console.log(stack)
     const handleCheckboxChange = (event) => {
         setPercentage(event.target.value);
     };
-    console.log(percentage)
+
     function getDate() {
         const today = new Date();
         const month = today.getMonth() + 1;
@@ -36,6 +37,7 @@ function Create() {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
     }
+  
     const history = useNavigate();
     const header = { "Access-control-Allow-Origin": "*" };
 
@@ -50,7 +52,7 @@ function Create() {
         })
         axios.post(
             "https://667eaaa0f2cb59c38dc69de2.mockapi.io/mycrudeapp", {
-            point: point, pool: pool, stack: stack, percentage: percentage
+            point: point, pool: pool, stack: stack,percentage: percentage
         })
             .then(() => {
                 history('/read')
@@ -110,7 +112,7 @@ function Create() {
                                                 <option value={true}>Yes</option>
                                             </select>
                                         </div>
-                                        {stack ? (
+                                        {stack  ? (
                                             <>
                                                 <div>
                                                     < label className='block text-white pt-4 pb-1'>Select A pool </label>
@@ -183,11 +185,12 @@ function Create() {
                                                         </div>
                                                     </div>
                                                     <div className=''>
-                                                        <p className='text-gray-400 text-sm'>You have stack your {(percentage / point*100) } coin</p>
+                                                        <p className='text-gray-400 text-sm '>You have stack your <span className='text-orange-400' >
+                                                     {(point / 100 *percentage)}</span> coin</p>
                                                     </div>
                                                 </div>
                                             </>
-                                        ) : ""}</>
+                                        ) : "red"}</>
                                 ) : ""}
                             </div>
                             <div>
