@@ -20,6 +20,7 @@ function Update() {
     const handleCheckboxChange = (event) => {
         setPercentage(event.target.value);
     };
+    console.log(stack)
     const navigate = useNavigate();
     function handleChange(e) {
         setFile(URL.createObjectURL(e.target.files[0]));

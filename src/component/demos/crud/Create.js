@@ -14,7 +14,7 @@ function Create() {
     const [email, setEmail] = useState("")
     const [point, setPoint] = useState("")
     // const [position, setPosition] = useState("null")
-    const [position, setPosition] = useState('active')
+    const [position, setPosition] = useState('notactive')
     const [pool, setPool] = useState("")
     const [dot, setDot] = useState("")
     const [file, setFile] = useState();
@@ -83,7 +83,7 @@ function Create() {
                                     <input onChange={(e) => setEmail(e.target.value)} type='email' id='email' name='email' className='bg-zinc-800 border border-zinc-700 px-2 py-1 rounded w-full text-white' />
                                 </div>
                             </div>
-                            <div className=' sm:flex'>
+                            <div className='sm:flex'>
                                 <div className='sm:pe-2 sm:w-1/2'>
                                     <label className='block text-white pt-4 pb-1'>Point</label>
                                     <input onChange={(e) => setPoint(e.target.value)} type='text' id='point' name='point' className='bg-zinc-800 border border-zinc-700 px-2 py-1 rounded w-full text-white' />

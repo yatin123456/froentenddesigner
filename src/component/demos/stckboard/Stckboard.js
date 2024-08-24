@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 
-function Stckboard() {
+function Stckboard(props) {
 
     const [data, setData] = useState([]);
     const [sum, setSum] = useState(0);
@@ -14,7 +14,7 @@ function Stckboard() {
     const [sum7, setSum7] = useState(0);
     const [sum8, setSum8] = useState(0);
     const [sum9, setSum9] = useState(0);
-
+  
     function getData() {
         axios
             .get("https://667eaaa0f2cb59c38dc69de2.mockapi.io/finaldata")
@@ -119,7 +119,7 @@ function Stckboard() {
                                     <p className='text-gray-400 text-md'>${sum}  / 60000 </p>
                                 </div>
                             </div>
-                           <Link to='/allparticipent'><button className='example_box-btn w-full'>View All</button></Link> 
+                           <Link to='/allparticipent'><button className='example_box-btn w-full' name={'TaksOnNFT'} >View All</button></Link> 
                         </div>
                     </div>
                     <div className='example_box text-start p-0 overflow-hidden'>
@@ -149,7 +149,7 @@ function Stckboard() {
                                     <p className='text-gray-400 text-md'>$ {sum2}  / 15000 </p>
                                 </div>
                             </div>
-                            <button className='example_box-btn w-full'>View All</button>
+                            <Link to='/allparticipent'><button className='example_box-btn w-full' >View All</button></Link> 
                         </div>
                     </div>
 
