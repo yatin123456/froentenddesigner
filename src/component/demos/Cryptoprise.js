@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Banner from '../pagebanner/Banner';
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { BsArrowLeft } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 function Cryptoprise() {
   const navigate = useNavigate()
@@ -13,7 +14,15 @@ function Cryptoprise() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [value, setValue] = useState('4');
+  const [searchTerm, setSearchTerm] = useState('');
 
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredCoins = data.filter(item =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase()) 
+  );
   const handleChange = (e) => {
     setValue(e.target.value);
   };
@@ -45,25 +54,32 @@ function Cryptoprise() {
       <Banner heading="crypto Live Data" coheading="Get Data From API" />
       <div className='container mx-auto '>
         <div className='back_bar text-start'>
-          <button onClick={() => goBack()} className="  btn bg-cyan-600 py-1 px-4 rounded-full font-light text-white flex place-items-center  "><BsArrowLeft className='text-xl me-2' />Go Back</button>
+         <Link to='/portfolio'> <button  className="  btn bg-cyan-600 py-1 px-4 rounded-full font-light text-white flex place-items-center  "><BsArrowLeft className='text-xl me-2' />Go Back</button></Link>
         </div>
 
-        {/* <select className='px-10 rounded-md bg-zinc-800 text-white border  border-zinc-400 my-4 w-40' value={value} onChange={handleChange}>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-        </select> */}
+      
         {loading ? (
           <p className='text-white my-5 text-center'>Loading...</p>
         ) : error ? (
           <p>Error: {error}</p>
         ) : (
-          // <div className={`grid grid-rows-4 grid-cols-${value} gap-4 my-5`}>
+        
+          <>
+          <p></p>
+          <input
+          type="text"
+          placeholder="Search for a coin..."
+          value={searchTerm}
+          onChange={handleSearch}
+          className='bg-zinc-800 border border-zinc-700 px-2 py-1 mt-3 rounded w-full text-white'
+          
+        />
             <div className={`grid grid-rows-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 my-5`}>
-            {data.map((item) => (
-              <div className='cursor-pointer crypto_box bg-zinc-800 rounded-md p-2 shadow-lg transition hover:shadow-black border border-zinc-700'>
-                <div className='crypto_box-top flex place-items-center'>
+              
+            {filteredCoins.map((item) => (
+              <div key={item.id} className='cursor-pointer crypto_box bg-zinc-800 rounded-md p-2 shadow-lg transition hover:shadow-black border border-zinc-700'>
+                <Link to={`/cryptoitem/${item.id}`}>
+                <div className='crypto_box-top flex place-items-center' >
                   <div className='crypto_img w-7'>
                     <img className='' src={item.image} />
                   </div>
@@ -73,10 +89,12 @@ function Cryptoprise() {
                   <h5 className='text-white '>{item.current_price}</h5>
                   <span className='px-2 rounded-full text-sm ms-3 text-white  bg-gray-600'>{item.market_cap_rank}</span>
                 </div>
+                </Link>
               </div>
 
             ))}
           </div>
+          </>
         )}
 
 

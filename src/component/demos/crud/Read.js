@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
-import Banner from '../../pagebanner/Banner';
 import axios from 'axios'
+import Banner from '../../pagebanner/Banner';
 import { ToastContainer, toast } from 'react-toastify';
 
 
 function Read() {
-        
+  
     const [data, setData] = useState([]);
     const [getDv, getDvalue] = useState();
     const getDefult = () => {getDvalue('active')}
@@ -26,6 +26,7 @@ function Read() {
         localStorage.setItem("percentage", percentage);
 
     }
+ 
     const handleDelet = (id) => {
         axios.delete(`https://667eaaa0f2cb59c38dc69de2.mockapi.io/finaldata/${id}`)
             .then(() => {
@@ -74,8 +75,10 @@ function Read() {
                         </div>
                         <div className='grid grid-rows-1 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 sm:gap-8 gap-4'>
                             {data.map((eachData) => (
+                               
                                 <>
-                                    <div className={`example_box text-start p-2 relative ${(getDv === (eachData.position)) ? "hidden" : ""}`} key={eachData.id}>
+                                
+                                    <div className={`example_box text-start p-2 relative  ${(getDv === (eachData.position)) ? "hidden" : ""}`} key={eachData.id}>
 
                                         <div className='flex h-full'>
                                             <div className='p-1 w-1/3'>
@@ -88,7 +91,7 @@ function Read() {
                                                     </div>
                                                     <h5 className='flex'><span className='text-white'>Email :  </span><span className='text-white opacity-50 font-light truncate block '> {eachData.email}</span></h5>
                                                     <div className='flex place-items-center'>
-                                                        <p className=''><span className='text-white'>Rank : </span><span className='text-white  font-semibold text-[12px] tracking-wider bg-cyan-900 rounded-sm px-2 '>{(eachData.id) }</span></p>
+                                                        <p className=''><span className='text-white'>Rank : </span><span className='text-white  font-semibold text-[12px] tracking-wider bg-cyan-900 rounded-sm px-2 '>{(eachData.id > eachData.id.point) ? 'red' : 'll'}</span></p>
                                                     </div>
                                                     {
                                                         (eachData.position) === 'active' ? (<p className='absolute right-4 -top-2 text-green-400 bg-green-900  w-fit text-[12px] rounded-md px-2  capitalize border font-semibold border-green-700'>Active</p>) : (<p className='absolute right-4 -top-2 text-rose-800 font-semibold bg-rose-400  w-fit text-[12px] rounded-md px-2  capitalize border border-rose-500'>Not-active</p>)
