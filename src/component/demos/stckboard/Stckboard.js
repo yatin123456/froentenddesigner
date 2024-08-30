@@ -57,10 +57,12 @@ function Stckboard(props) {
                 if (Array.isArray(filtered)) {
                     const totalSum = filtered.reduce((acc, item) => acc + (Number(item.point / 100 * item.percentage) || 0), 0);
                     setSum(totalSum);
+                    console.log(totalSum)
                 }
                 if (Array.isArray(filtered2)) {
                     const totalSum2 = filtered2.reduce((acc, item) => acc + (Number(item.point / 100 * item.percentage) || 0), 0);
                     setSum2(totalSum2);
+                    console.log(totalSum2)
                 }
                 if (Array.isArray(filtered3)) {
                     const totalSum3 = filtered3.reduce((acc, item) => acc + (Number(item.point / 100 * item.percentage) || 0), 0);
