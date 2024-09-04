@@ -28,16 +28,19 @@ function Stckboard(props) {
     const viewall = async (e) => {
         e.preventDefault();
         const name = e.target.name;
+        const totalValue = e.target.getAttribute('totalvalue');
+        const per = e.target.getAttribute('per');
         const idToUpdate = '1';
         axios.put(
             `https://66cea862901aab24841f1914.mockapi.io/pooldata/${idToUpdate}`, {
-            name: name, header}
+            name: name,totalvalue: totalValue,per: per, header
+        }
         )
-        .then(() => {
-            navigate('/allparticipent');
-        });
-    
-}
+            .then(() => {
+                navigate('/allparticipent');
+            });
+
+    }
     useEffect(() => {
         fetch('https://667eaaa0f2cb59c38dc69de2.mockapi.io/mycrudeapp')
             .then(response => response.json())
@@ -53,7 +56,7 @@ function Stckboard(props) {
                 const filtered7 = data.filter(item => item.pool == 'FluidPro' && item.stack === 'true');
                 const filtered8 = data.filter(item => item.pool == 'FluidStarter' && item.stack === 'true');
                 const filtered9 = data.filter(item => item.pool == 'FluidGainer' && item.stack === 'true');
-                 
+
                 if (Array.isArray(filtered)) {
                     const totalSum = filtered.reduce((acc, item) => acc + (Number(item.point / 100 * item.percentage) || 0), 0);
                     setSum(totalSum);
@@ -129,14 +132,13 @@ function Stckboard(props) {
                                     <span className='text-gray-400 text-sm block'>{(sum / 60000 * 100).toFixed(2)}%</span>
                                 </div>
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                <div className={`bg-green-500  h-1 ${(sum / 60000 * 100 < 15) ? 'bg-blue-700' : (sum / 60000 * 100 > 50 || sum / 60000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum / 60000 * 100 + '%' }}></div>
+                                    <div className={`bg-green-500  h-1 ${(sum / 60000 * 100 < 15) ? 'bg-blue-700' : (sum / 60000 * 100 > 50 || sum / 60000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum / 60000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>${sum}  / 60000 </p>
                                 </div>
                             </div>
-                           <button className='example_box-btn w-full' name='TaskOnNFT' onClick={viewall} >View All</button>
-              
+                            <button className='example_box-btn w-full' name='TaskOnNFT' totalvalue='60000' per='20' onClick={viewall} >View All</button>
                         </div>
                     </div>
                     <div className='example_box text-start p-0 overflow-hidden'>
@@ -156,17 +158,17 @@ function Stckboard(props) {
                                 </div>
                                 <div className=' flex place-content-between'>
                                     <p className='text-gray-400 text-md'>Pool occupancy </p>
-                                    <span className='text-gray-400 text-sm block'>{(sum2 / 15000  * 100).toFixed(2)}%</span>
+                                    <span className='text-gray-400 text-sm block'>{(sum2 / 15000 * 100).toFixed(2)}%</span>
                                 </div>
 
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                <div className={`bg-green-500  h-1 ${(sum2 / 15000  * 100 < 15) ? 'bg-blue-700' : (sum2 / 15000  * 100 > 50 || sum2 / 15000  * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum2 / 15000  * 100 + '%' }}></div>
+                                    <div className={`bg-green-500  h-1 ${(sum2 / 15000 * 100 < 15) ? 'bg-blue-700' : (sum2 / 15000 * 100 > 50 || sum2 / 15000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum2 / 15000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>$ {sum2}  / 15000 </p>
                                 </div>
                             </div>
-                            <button className='example_box-btn w-full' name='TaskOnNFT2' onClick={viewall} >View All</button>
+                            <button className='example_box-btn w-full' name='TaskOnNFT2' totalvalue='15000' per='12' onClick={viewall} >View All</button>
                         </div>
                     </div>
 
@@ -191,13 +193,13 @@ function Stckboard(props) {
                                 </div>
 
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                <div className={`bg-green-500  h-1 ${(sum3 / 45000 * 100 < 15) ? 'bg-blue-700' : (sum3 / 45000 * 100 > 50 || sum3 / 45000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum3 / 45000 * 100 + '%' }}></div>
+                                    <div className={`bg-green-500  h-1 ${(sum3 / 45000 * 100 < 15) ? 'bg-blue-700' : (sum3 / 45000 * 100 > 50 || sum3 / 45000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum3 / 45000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>$ {sum3}  / 45000 </p>
                                 </div>
                             </div>
-<button className='example_box-btn w-full' name='LockedPro+' onClick={viewall} >View All</button> 
+                            <button className='example_box-btn w-full' name='LockedPro+' totalvalue='45000' per='15' onClick={viewall} >View All</button>
                         </div>
                     </div>
                     <div className='example_box text-start p-0 overflow-hidden'>
@@ -226,7 +228,7 @@ function Stckboard(props) {
                                     <p className='text-gray-400 text-md'>$ {sum4}  / 60000 </p>
                                 </div>
                             </div>
-<button className='example_box-btn w-full' name='LockedStarter+' onClick={viewall} >View All</button> 
+                            <button className='example_box-btn w-full' name='LockedStarter+' totalvalue='60000' per='25' onClick={viewall} >View All</button>
                         </div>
                     </div>
                     <div className='example_box text-start p-0 overflow-hidden'>
@@ -249,13 +251,13 @@ function Stckboard(props) {
                                     <span className='text-gray-400 text-sm block'>{(sum5 / 60000 * 100).toFixed(2)}%</span>
                                 </div>
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`bg-green-500  h-1 ${(sum4 / 60000 * 100 < 15) ? 'bg-blue-700' : (sum4 / 60000 * 100 > 50 || sum4 / 60000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum4 / 60000 * 100 + '%' }}></div>
+                                    <div className={`bg-green-500  h-1 ${(sum5 / 60000 * 100 < 15) ? 'bg-blue-700' : (sum5 / 60000 * 100 > 50 || sum5 / 60000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum5 / 60000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>$ {sum5}  / 60000 </p>
                                 </div>
                             </div>
-<button className='example_box-btn w-full' name='LockedStarter+2' onClick={viewall} >View All</button> 
+                            <button className='example_box-btn w-full' name='LockedStarter+2' totalvalue='60000' per='24' onClick={viewall} >View All</button>
                         </div>
                     </div>
                     <div className='example_box text-start p-0 overflow-hidden'>
@@ -284,7 +286,7 @@ function Stckboard(props) {
                                     <p className='text-gray-400 text-md'>$ {sum6}  / 60000 </p>
                                 </div>
                             </div>
-<button className='example_box-btn w-full' name='LockedGainer+' onClick={viewall} >View All</button> 
+                            <button className='example_box-btn w-full' name='LockedGainer+' totalvalue='60000' per='12' onClick={viewall} >View All</button>
                         </div>
                     </div>
                     <div className='example_box text-start p-0 overflow-hidden'>
@@ -313,7 +315,7 @@ function Stckboard(props) {
                                     <p className='text-gray-400 text-md'>$ {sum7}  / 10000  </p>
                                 </div>
                             </div>
-<button className='example_box-btn w-full' name='FluidPro' onClick={viewall} >View All</button> 
+                            <button className='example_box-btn w-full' name='FluidPro' totalvalue='10000' per='10' onClick={viewall} >View All</button>
                         </div>
                     </div>
                     <div className='example_box text-start p-0 overflow-hidden'>
@@ -342,7 +344,7 @@ function Stckboard(props) {
                                     <p className='text-gray-400 text-md'>$ {sum8}  / 1000000</p>
                                 </div>
                             </div>
-<button className='example_box-btn w-full' name='FluidStarter' onClick={viewall} >View All</button> 
+                            <button className='example_box-btn w-full' name='FluidStarter' totalvalue='1000000' per='5' onClick={viewall} >View All</button>
                         </div>
                     </div>
                     <div className='example_box text-start p-0 overflow-hidden'>
@@ -371,7 +373,7 @@ function Stckboard(props) {
                                     <p className='text-gray-400 text-md'>$ {sum9}  / 1000000 </p>
                                 </div>
                             </div>
-<button className='example_box-btn w-full' name='FluidGainer' onClick={viewall} >View All</button> 
+                            <button className='example_box-btn w-full' name='FluidGainer' totalvalue='1000000' per='35' onClick={viewall} >View All</button>
                         </div>
                     </div>
                 </div>
