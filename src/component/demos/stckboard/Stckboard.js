@@ -25,6 +25,7 @@ function Stckboard(props) {
             });
 
     }
+    
     const viewall = async (e) => {
         e.preventDefault();
         const name = e.target.name;
@@ -132,7 +133,7 @@ function Stckboard(props) {
                                     <span className='text-gray-400 text-sm block'>{(sum / 60000 * 100).toFixed(2)}%</span>
                                 </div>
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`bg-green-500  h-1 ${(sum / 60000 * 100 < 15) ? 'bg-blue-700' : (sum / 60000 * 100 > 50 || sum / 60000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum / 60000 * 100 + '%' }}></div>
+                                <div className={`  h-1 ${(sum/60000*100 === '0' || sum/60000*100 < '33') ? 'bg-blue-700' : (sum/60000*100 === '34' || sum/60000*100<'66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum / 60000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>${sum}  / 60000 </p>
@@ -162,7 +163,7 @@ function Stckboard(props) {
                                 </div>
 
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`bg-green-500  h-1 ${(sum2 / 15000 * 100 < 15) ? 'bg-blue-700' : (sum2 / 15000 * 100 > 50 || sum2 / 15000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum2 / 15000 * 100 + '%' }}></div>
+                                <div className={`  h-1 ${(sum2/15000*100 === '0' || sum2/15000*100 < '33') ? 'bg-blue-700' : (sum2/15000*100 === '34' || sum2/15000*100<'66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum2 / 15000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>$ {sum2}  / 15000 </p>
@@ -193,7 +194,7 @@ function Stckboard(props) {
                                 </div>
 
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`bg-green-500  h-1 ${(sum3 / 45000 * 100 < 15) ? 'bg-blue-700' : (sum3 / 45000 * 100 > 50 || sum3 / 45000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum3 / 45000 * 100 + '%' }}></div>
+                                <div className={`  h-1 ${(sum3/45000*100 === '0' || sum3/45000*100 < '33') ? 'bg-blue-700' : (sum3/45000*100 === '34' || sum3/45000*100<'66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum3 / 45000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>$ {sum3}  / 45000 </p>
@@ -222,7 +223,7 @@ function Stckboard(props) {
                                     <span className='text-gray-400 text-sm block'>{(sum4 / 60000 * 100).toFixed(2)}%</span>
                                 </div>
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`bg-green-500  h-1 ${(sum4 / 60000 * 100 < 15) ? 'bg-blue-700' : (sum4 / 60000 * 100 > 50 || sum4 / 60000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum4 / 60000 * 100 + '%' }}></div>
+                                <div className={`  h-1 ${(sum4/60000*100 === '0' || sum4/60000*100 < '33') ? 'bg-blue-700' : (sum4/60000*100 === '34' || sum4/60000*100<'66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum4 / 60000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>$ {sum4}  / 60000 </p>
@@ -251,7 +252,7 @@ function Stckboard(props) {
                                     <span className='text-gray-400 text-sm block'>{(sum5 / 60000 * 100).toFixed(2)}%</span>
                                 </div>
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`bg-green-500  h-1 ${(sum5 / 60000 * 100 < 15) ? 'bg-blue-700' : (sum5 / 60000 * 100 > 50 || sum5 / 60000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum5 / 60000 * 100 + '%' }}></div>
+                                <div className={`  h-1 ${(sum5/60000*100 === '0' || sum5/60000*100 < '33') ? 'bg-blue-700' : (sum5/60000*100 === '34' || sum5/60000*100<'66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum5 / 60000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>$ {sum5}  / 60000 </p>
@@ -280,7 +281,7 @@ function Stckboard(props) {
                                     <span className='text-gray-400 text-sm block'>{(sum6 / 60000 * 100).toFixed(2)}%</span>
                                 </div>
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`bg-green-500  h-1 ${(sum6 / 60000 * 100 < 15) ? 'bg-blue-700' : (sum6 / 60000 * 100 > 50 || sum6 / 60000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum6 / 60000 * 100 + '%' }}></div>
+                                <div className={`  h-1 ${(sum6/60000*100 === '0' || sum6/60000*100 < '33') ? 'bg-blue-700' : (sum6/60000*100 === '34' || sum6/60000*100<'66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum6 / 60000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>$ {sum6}  / 60000 </p>
@@ -309,10 +310,10 @@ function Stckboard(props) {
                                     <span className='text-gray-400 text-sm block'>{(sum7 / 10000 * 100).toFixed(2)}%</span>
                                 </div>
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`bg-green-500  h-1 ${(sum7 / 10000 * 100 < 15) ? 'bg-blue-700' : (sum7 / 10000 * 100 > 50 || sum7 / 10000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum7 / 10000 * 100 + '%' }}></div>
+                                    <div className={`  h-1 ${(sum7/10000*100 === '0' || sum7/10000*100 < '33') ? 'bg-blue-700' : (sum7/10000*100 === '34' || sum7/10000*100<'66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum7 / 10000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum7}  / 10000  </p>
+                                    <p className='text-gray-400 text-md'>$ {sum7}  / 100s00  </p>
                                 </div>
                             </div>
                             <button className='example_box-btn w-full' name='FluidPro' totalvalue='10000' per='10' onClick={viewall} >View All</button>
@@ -338,7 +339,7 @@ function Stckboard(props) {
                                     <span className='text-gray-400 text-sm block'>{(sum8 / 1000000 * 100).toFixed(2)}%</span>
                                 </div>
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`bg-green-500  h-1 ${(sum8 / 1000000 * 100 < 15) ? 'bg-blue-700' : (sum8 / 1000000 * 100 > 50 || sum8 / 1000000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum8 / 1000000 * 100 + '%' }}></div>
+                                <div className={`  h-1 ${(sum8/1000000*100 === '0' || sum8/1000000*100 < '33') ? 'bg-blue-700' : (sum8/1000000*100 === '34' || sum8/1000000*100<'66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum8 / 1000000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>$ {sum8}  / 1000000</p>
@@ -367,7 +368,7 @@ function Stckboard(props) {
                                     <span className='text-gray-400 text-sm block'>{(sum9 / 1000000 * 100).toFixed(2)}%</span>
                                 </div>
                                 <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`bg-green-500  h-1 ${(sum9 / 1000000 * 100 < 15) ? 'bg-blue-700' : (sum9 / 1000000 * 100 > 50 || sum9 / 1000000 * 100 > 16) ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum9 / 1000000 * 100 + '%' }}></div>
+                                <div className={`  h-1 ${(sum9/1000000*100 === '0' || sum9/1000000*100 < '33') ? 'bg-blue-700' : (sum9/1000000*100 === '34' || sum9/1000000*100<'66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum9 / 1000000 * 100 + '%' }}></div>
                                 </div>
                                 <div className='flex mt-2'>
                                     <p className='text-gray-400 text-md'>$ {sum9}  / 1000000 </p>

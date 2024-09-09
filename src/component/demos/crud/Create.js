@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Banner from '../../pagebanner/Banner'
 import { Link } from 'react-router-dom'
@@ -21,10 +21,12 @@ function Create() {
     const [stack, setStack] = useState();
     const [currentDate, setCurrentDate] = useState(getDate());
     const [percentage, setPercentage] = useState(null);
-    console.log(stack)
+    const [sum, setSum] = useState(0);
+    const [data, setData] = useState([]);
     const handleCheckboxChange = (event) => {
         setPercentage(event.target.value);
     };
+ console.log(pool);
 
     function getDate() {
         const today = new Date();
@@ -58,6 +60,23 @@ function Create() {
                 history('/read')
             });
     }
+    useEffect(() => {
+        fetch('https://667eaaa0f2cb59c38dc69de2.mockapi.io/finaldata')
+            .then(response => response.json())
+            .then(data => {
+                setData(data);
+                const item = data;
+                const filtered = data.filter(item => item.pool == pool);
+                if (Array.isArray(filtered)) {
+                    const totalSum = filtered.reduce((acc, item) => acc + (Number(item.point / 100 * item.percentage) || 0), 0);
+                    setSum(totalSum);
+                }
+                setData(filtered, pool);
+                
+            })
+            .catch(error => console.error('Error fetching data:', error))
+    }, [pool]);
+    console.log(data)
     return (
         <>
             <ToastContainer
@@ -134,7 +153,7 @@ function Create() {
                                                     < label className='block text-white pt-4 pb-1'>How much do you want to stack? </label>
                                                     <div className='flex'>
                                                         <div className='border border-slate-600 rounded-sm h-8 flex w-1/4'>
-                                                            <div className={`flex relative w-full ${(percentage === '10') ? 'bg-cyan-600' :''}`}>
+                                                            <div className={`flex disabled:opacity-15 relative w-full ${(percentage === '10') ? 'bg-cyan-600' :''}`}>
                                                                 <input
                                                                     type="checkbox"
                                                                     value="10"

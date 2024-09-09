@@ -42,7 +42,6 @@ function Allparticipent() {
                 const response = await fetch('https://66cea862901aab24841f1914.mockapi.io/pooldata/1');
                 const result = await response.json();
                 setFetchedData(result);
-                
             } catch { }
         };
         fetchData();
@@ -71,7 +70,7 @@ function Allparticipent() {
                             </div>
                             <div className='flex items-center'>
                                 <p className='p-0 text-white '>Total Earning &nbsp;<span className='  text-orange-500 font-semibold'>
-                                    ${sum / 100 * per}
+                                    ${(sum / 100 * per).toFixed(2)}
                                 </span></p>
                             </div>
                         </div>
