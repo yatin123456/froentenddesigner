@@ -10,13 +10,24 @@
    .com_btn {
       @apply border-slate-300 border-solid border text-sm rounded-full text-white bg-gray-800 hover:bg-slate-300 hover:text-black ease-in-out duration-300
    }
-
+   .back_com-tn{
+      @apply  bg-cyan-600 py-1 mb-3 px-4 rounded-full font-light text-white flex place-items-center
+   }
    .example_box {
       @apply rounded-xl p-4 bg-zinc-800 text-center border border-zinc-700 hover:border-cyan-600 hover:shadow-2xl
    }
 
    .example_box-btn {
       @apply mt-2 rounded-full border-cyan-600 border py-2 px-5 text-xs text-white font-semibold hover:bg-cyan-600 transition
+   }
+   .notallow{
+      @apply opacity-25 cursor-not-allowed
+   }
+   .pool_box{
+      @apply bg-zinc-900 p-3 rounded-md
+   }
+   .pool_box.toppool{
+      @apply border-2 border-green-600  bg-gradient-to-l from-green-900
    }
 }
 
@@ -53,7 +64,18 @@ body {
    right: -8%;
    transform: rotate(225deg);
 }
-
+.menu_link{
+   position: relative;
+}
+.menu_link.active::after{
+   content: '';
+   width: 50%;
+   height: 2px;
+   background-color: #0891b2;
+   position: absolute;
+   bottom: -2px;
+   left: 0;
+}
 @keyframes spin {
    from {
       transform: rotate(0deg);

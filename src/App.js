@@ -16,6 +16,7 @@ import Shop from './component/shop/Shop';
 import Stckboard from './component/demos/stckboard/Stckboard';
 import Allparticipent from './component/demos/stckboard/Allparticipent'
 import Cryptoitem from './component/demos/Cryptoitem';
+import Estimateearnings from './component/demos/stckboard/Estimateearnings';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route  path="/stackboard" element={<Stckboard />}></Route>
             <Route  path="/allparticipent" element={<Allparticipent />}></Route>
             <Route  path="/cryptoitem/:id" element={<Cryptoitem />}></Route>
+            <Route  path="/estimateearnings" element={<Estimateearnings />}></Route>
           </Routes>
           <Footer/>
         </BrowserRouter>

@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios'
 
 function Update() {
-
+    const [data, setData] = useState([]);
     const [id, setId] = useState(0);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -17,10 +17,16 @@ function Update() {
     const [file, setFile] = useState();
     const [pool, setPool] = useState("")
     const [percentage, setPercentage] = useState();
+    const [options, setOptions] = useState([]);
+    const [stackmin, setMinLimit] = useState([0]);
+    const [stackmax, setMaxLimit] = useState([0]);
+    const [stackmain, setMainLimit] = useState([]);
+
     const handleCheckboxChange = (event) => {
         setPercentage(event.target.value);
     };
-    console.log(stack)
+    console.log('datasasa', stackmin)
+    console.log('datasasa', stackmax)
     const navigate = useNavigate();
     function handleChange(e) {
         setFile(URL.createObjectURL(e.target.files[0]));
@@ -32,25 +38,39 @@ function Update() {
         setPoint(localStorage.getItem("point"));
         setPosition(localStorage.getItem("position"));
         setFile(localStorage.getItem("file"));
-        setPool(localStorage.getItem("pool"));
+        // setPool(localStorage.getItem("pool"));
         setStack(localStorage.getItem("stack"));
         setPercentage(localStorage.getItem("percentage"));
 
+        fetch('https://66cea862901aab24841f1914.mockapi.io/Poollist')
+            .then(response => response.json())
+            .then(data => {
+                setData(data);
+                const item = data;
+                const namesArray = data.map(item => item.symbol);
+                const stacklimit = data.find(item => item.symbol === pool && item.minstack !== undefined);
+                if (stacklimit) {
+                    setMinLimit(stacklimit.minstack);
+                    setMaxLimit(stacklimit.maxstack);
+                }
+                setOptions(namesArray);
+                setMainLimit(stacklimit);
 
-    }, []);
+            })
+    }, [pool]);
 
 
     const handleUpdate = (e) => {
         e.preventDefault();
         axios.put(`https://667eaaa0f2cb59c38dc69de2.mockapi.io/finaldata/${id}`,
             {
-                name: name, email: email, point: point, position: position, file: file, pool: pool, stack: stack,percentage: percentage
+                name: name, email: email, point: point, position: position, file: file, pool: pool, stack: stack, percentage: percentage
             },
 
         )
         axios.put(`https://667eaaa0f2cb59c38dc69de2.mockapi.io/mycrudeapp/${id}`,
             {
-                point: point, stack: stack, pool: pool,percentage:percentage
+                point: point, stack: stack, pool: pool, percentage: percentage
             },)
             .then(() => {
                 navigate("/read")
@@ -115,69 +135,74 @@ function Update() {
                                         </select>
                                         {stack ? (
                                             <>
+                                            
                                                 < label className='block text-white pt-4 pb-1'>Select A pool </label>
+                                               
                                                 <select className='bg-zinc-800 border border-zinc-700 px-2 py-1 rounded w-full text-white' value={pool} id='pool' name='pool' onChange={(e) => setPool(e.target.value)}>
-                                                    <option value="">Select</option>
-                                                    <option value="TaskOnNFT">TaskOn NFT (+20.0% APR)</option>
-                                                    <option value="TaskOnNFT2">TaskOn NFT (+24% APR)</option>
-                                                    <option value="LockedPro+">Locked Pro+ (+20.0% APR)</option>
-                                                    <option value="LockedStarter+">Locked Starter+ (+12.0% APR)</option>
-                                                    <option value="LockedStarter+2">Locked Starter+ (+14.0% APR)</option>
-                                                    <option value="LockedGainer+">Locked Gainer+ (+16.0% APR)</option>
-                                                    <option value="FluidPro">Fluid Pro (+6.0% APR)</option>
-                                                    <option value="FluidStarter">Fluid Starter (+2.1% APR)</option>
-                                                    <option value="FluidGainer">Fluid Gainer (+401% APR)</option>
+                                                    <option value={this}>Select</option>
+                                                    {options.map((name, index) => (
+                                                        <option key={index} value={name}>
+                                                            {name}
+                                                        </option>
+                                                    ))}
                                                 </select>
+
+
+                                                <div className=''>
+
+                                                    <p className='text-gray-400 text-sm '>You can stack minimum <span className='text-cyan-600'>${stackmin}</span>&nbsp;& Max <span className='text-cyan-600'>${stackmax}</span></p>
+
+                                                </div>
                                                 <div className=''>
 
                                                     < label className='block text-white pt-4 pb-1'>You stack your coin  </label>
                                                     <div className='flex'>
-                                                        <div className='border border-slate-600 rounded-sm h-8 flex w-1/4'>
+                                                        <div disabled className={`border border-slate-600 rounded-sm h-8 flex w-1/4 ${((point / 100 * 10) > stackmin) ? '' : 'notallow '}`}>
                                                             <div className={`flex relative w-full ${(percentage === '10') ? 'bg-cyan-600' : ''}`}>
                                                                 <input
                                                                     type="checkbox"
                                                                     value="10"
                                                                     checked={percentage === '10'}
                                                                     onChange={handleCheckboxChange}
-                                                                    className='w-full h-8  opacity-0 absolute left-0 top-0'
+                                                                    className={`w-full h-8  opacity-0 absolute left-0 top-0 ${((point / 100 * 10) > stackmin) ? '' : 'hidden'}`}
                                                                 />
                                                                 <span className='m-auto text-white'>10%</span>
                                                             </div>
                                                         </div>
 
-                                                        <div className='border border-slate-600 rounded-sm h-8 flex w-1/4'>
+                                                        <div disabled className={`border border-slate-600 rounded-sm h-8 flex w-1/4 ${((point / 100 * 50) > stackmin) ? '' : 'notallow '}`}>
                                                             <div className={`flex relative w-full ${(percentage === '50') ? 'bg-cyan-600' : ''}`}>
                                                                 <input
                                                                     type="checkbox"
                                                                     value="50"
                                                                     checked={percentage === '50'}
                                                                     onChange={handleCheckboxChange}
-                                                                    className='w-full h-8  opacity-0 absolute left-0 top-0'
+                                                                    className={`w-full h-8  opacity-0 absolute left-0 top-0 ${((point / 100 * 50) > stackmin) ? '' : 'hidden'}`}
                                                                 />
                                                                 <span className='m-auto text-white'>50%</span>
                                                             </div>
                                                         </div>
 
-                                                        <div className='border border-slate-600 rounded-sm h-8 flex w-1/4'>
+                                                        <div disabled className={`border border-slate-600 rounded-sm h-8 flex w-1/4 ${((point / 100 * 75) > stackmin) ? '' : 'notallow '}`}>
                                                             <div className={`flex relative w-full ${(percentage === '75') ? 'bg-cyan-600' : ''}`}>
                                                                 <input
                                                                     type="checkbox"
                                                                     value="75"
                                                                     checked={percentage === '75'}
                                                                     onChange={handleCheckboxChange}
-                                                                    className='w-full h-8  opacity-0 absolute left-0 top-0'
+                                                                    className={`w-full h-8  opacity-0 absolute left-0 top-0 ${((point / 100 * 75) > stackmin) ? '' : 'hidden'}`}
                                                                 />
                                                                 <span className='m-auto text-white'>75%</span>
                                                             </div>
                                                         </div>
-                                                        <div className='border border-slate-600 rounded-sm h-8 flex w-1/4'>
+                                                        <div disabled className={`border border-slate-600 rounded-sm h-8 flex w-1/4 ${((point / 100 * 100) > stackmin) ? '' : 'notallow '}`}>
                                                             <div className={`flex relative w-full ${(percentage === '100') ? 'bg-cyan-600' : ''}`}>
                                                                 <input
                                                                     type="checkbox"
                                                                     value="100"
                                                                     checked={percentage === '100'}
                                                                     onChange={handleCheckboxChange}
-                                                                    className='w-full h-8  opacity-0 absolute left-0 top-0'
+                                                                    className={`w-full h-8  opacity-0 absolute left-0 top-0 ${((point / 100 * 100) > stackmin) ? '' : 'hidden'}`}
                                                                 />
                                                                 <span className='m-auto text-white'>100%</span>
                                                             </div>
@@ -193,7 +218,7 @@ function Update() {
                                     </>
                                 ) : ""}
 
-                                
+
                             </div>
                         </div>
                         <div>

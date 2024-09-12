@@ -56,7 +56,7 @@ function Read() {
             />
             <Banner heading="User Rank List" coheading="Editeble Data" />
             <div className='container mx-auto my-5'>
-            <Link to="/portfolio"><button className="btn bg-cyan-600 py-1 mb-3 px-4 rounded-full font-light text-white flex place-items-center  ">Go Back</button></Link>
+            <Link to="/portfolio"><button className="back_com-tn btn  ">Go Back</button></Link>
                 <div className='pb-5 mb-5 border-b border-zinc-700 sm:flex sm:place-content-between'>
                     <h2 className='text-cyan-400 sm:text-2xl font-semibold'>Users Data<span className='text-sm text-white opacity-50 font-light ps-2'>({data.length})</span></h2>
                     <Link to="/create"><button className='ms-auto btn bg-cyan-600 py-1 px-4 rounded-full font-light text-white flex place-items-center  '>Add User</button></Link>
@@ -75,9 +75,7 @@ function Read() {
                         </div>
                         <div className='grid grid-rows-1 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 sm:gap-8 gap-4'>
                             {data.map((eachData) => (
-                               
                                 <>
-                                
                                     <div className={`example_box text-start p-2 relative  ${(getDv === (eachData.position)) ? "hidden" : ""}`} key={eachData.id}>
 
                                         <div className='flex h-full'>
@@ -128,7 +126,11 @@ function Read() {
                 )
                 }
 
-                <div className='my-3 text-end text-white'>Click here <Link to="/stackboard"><button className='ms-auto btn bg-cyan-600 py-1 px-4 rounded-full font-light text-white '>Stacking board</button></Link></div>
+                <div className='mt-4'>
+                <Link to="/stackboard"><button className='ms-auto m-3 btn bg-cyan-600 py-1 px-4 rounded-full font-light text-white '>Stacking board</button></Link>
+                <Link to="/estimateearnings"><button className='ms-auto me-3 btn bg-cyan-600 py-1 px-4 rounded-full font-light text-white '>Estimate earnings</button></Link>
+                
+                </div>
             </div>
         </>
     )

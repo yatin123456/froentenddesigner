@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation  } from 'react-router-dom'
 import { useNavigate } from "react-router-dom"
 
 function Header() {
@@ -9,6 +9,11 @@ function Header() {
     const ToggleClass = () =>{
         setisOpen(!isOpen)
     }
+    const useActiveRoute = () => {
+        const location = useLocation();
+        return location.pathname;
+      };
+      const activeRoute = useActiveRoute();
     console.log(isOpen);
     const navigate = useNavigate()
     const goBackHome=()=>{navigate("/");}
@@ -34,10 +39,10 @@ function Header() {
                 </div>
                 <div  className={`header_right  align-middle place-items-center text-sm sm:block transition  ${isOpen ? 'block, absolute left-0 top-20 w-full text-center bg-slate-800 py-3 z-10': 'hidden'}`} >
                     <ul className={`2xl:flex xl:flex lg:flex md:flex sm:flex block sm:py-3  ${isOpen ? ' flex flex-col justify-between c_bar ': ''} `}>
-                        <li><Link className='menu_link sm:w-full sm:block' to='/'>About Me</Link></li>
-                        <li><Link className='menu_link sm:w-full sm:block' to='/resume'>Resume</Link></li>
-                        <li><Link className='menu_link sm:w-full sm:block' to='/portfolio'>Portfolio</Link></li>
-                        <li><Link className='menu_link sm:w-full sm:block' to='/contact'>Contact</Link></li>
+                        <li><Link className={`menu_link sm:w-full sm:block ${activeRoute === '/' ? 'active' : ''}`} to='/'>About Me</Link></li>
+                        <li><Link className={`menu_link sm:w-full sm:block ${activeRoute === '/resume' ? 'active' : ''}`} to='/resume'>Resume</Link></li>
+                        <li><Link className={`menu_link sm:w-full sm:block ${activeRoute === '/portfolio' ? 'active' : ''}`} to='/portfolio'>Portfolio</Link></li>
+                        <li><Link className={`menu_link sm:w-full sm:block ${activeRoute === '/contact' ? 'active' : ''}`} to='/contact'>Contact</Link></li>
                     </ul>
                 </div>
             </div>
