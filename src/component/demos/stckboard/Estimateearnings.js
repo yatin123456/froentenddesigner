@@ -25,7 +25,7 @@ function Estimateearnings() {
                 setHIgher(highePer);
                 setLoading(false);
             })
-    }, []);
+    }, [higher]);
     console.log('daeeeetaas', pool)
     return (
         <>
