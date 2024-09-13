@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom"
 function Header() {
 
     const [isOpen, setisOpen] = useState(false);
-
     const ToggleClass = () =>{
         setisOpen(!isOpen)
     }
@@ -16,17 +15,18 @@ function Header() {
       const activeRoute = useActiveRoute();
     console.log(isOpen);
     const navigate = useNavigate()
-    const goBackHome=()=>{navigate("/");}
+  
     return (
         <>
-            <div className='header_wrap flex align-middle mt-5 mx-auto justify-between  container'>
+            <div className='header_wrap flex align-middle my-5 mx-auto justify-between  container'>
                 <div className='header_left '>
-                    <div className='header_left-wrap flex align-middle cursor-pointer'  onClick={()=>goBackHome()}>
+                    <div className='header_left-wrap flex align-middle cursor-pointer' >
                         <div className='header_left-img border border-solid border-white flex w-10 h-10 rounded-full bg-cyan-600'>
                             <p className='p-0 m-auto  font-bold text-3xl text-white'>P</p>
                         </div>
-                        <div className='header_left-name flex place-items-center ps-3 text-white'>
-                            <p className='p-0 h-fit'><span className='font-bold'>Variya</span>  <span>Pradip</span></p>
+                        <div className='header_left-name  place-items-center ps-3 text-white'>
+                            <p className='p-0 h-fit '><span className='font-bold'>Variya</span>  <span>Pradip</span></p>
+                            <Link to='/admin'><span className='block text-sm text-cyan-600'>Admin</span></Link>
                         </div>
                     </div>
                 </div>

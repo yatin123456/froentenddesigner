@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import coinbg from '../../../images/coinbg.png'
 
 function Stckboard(props) {
 
@@ -121,282 +122,284 @@ function Stckboard(props) {
 
     return (
         <>
-            <div className='container mx-auto my-10'>
-                {/* {specificData ? (
-                    <pre>{JSON.stringify(specificData, 'FluidGainer', 1)}</pre>
-                ) : (
-                    <p>Loading...</p>
-                )} */}
-                <Link to="/read"><button className="back_com-tn btn  ">Go Back</button></Link>
-                <h3 className='text-white font-bold text-xl mb-5'>Open pools</h3>
-                <div className='grid grid-rows-1 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 sm:gap-8 gap-4'>
+            <div className='mainbg'>
+                <div className='container mx-auto my-10'>
+                    <div className='text-center'>
+                        <img className='w-1/3 mx-auto' src={coinbg} />
+                        <h1 className='text-white text-4xl font-semibold mt-3'>Score points & get token allocations</h1>
+                        <p className='text-white mx-auto text-md w-3/4 mt-3'>Jump into the Web3 revolution with JumpTask! Earn points by completing tasks and transform them into token allocations. Seamless, exciting, and rewarding – let's make your Web3 journey unforgettable.</p>
+                    </div>
+                    <Link to="/read"><button className="back_com-tn btn  ">Go Back</button></Link>
+                    <h3 className='text-white font-bold text-xl mb-5'>Open pools</h3>
+                    <div className='grid grid-rows-1 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 sm:gap-8 gap-4'>
 
-                    <div className='example_box  text-start p-0 overflow-hidden'>
-                        <div className='p-2 stck-bg'>
-                            <h2 className='text-white'>TaksOn NFT</h2>
-                        </div>
-                        <div className='p-2'>
-                            <p className='text-white text-sm'>Collect earnings in 6 months</p>
-                            <p className='text-white text-sm'>Min stake 5 $JMPT</p>
-                            <p className='text-orange-400 text-sm'>{fl} User JOin this pool</p>
-                            <div className='flex mt-3'>
-                                <p className='text-white text-xl font-semibold'>+20.0%<span className='text-white ps-2 text-sm font-light'>APR</span></p>
+                        <div className='example_box  text-start p-0 overflow-hidden'>
+                            <div className='p-2 stck-bg'>
+                                <h2 className='text-white'>TaksOn NFT</h2>
                             </div>
-                            <div className={`${(sum == 60000 || sum > 60000) ? 'opacity-50 relative' : ''}`}>
-                                <div className={`${(sum == 60000 || sum > 60000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden'} `}>
-                                    <p className='m-auto text-white'>Pool is Full</p>
+                            <div className='p-2'>
+                                <p className='text-white text-sm'>Collect earnings in 6 months</p>
+                                <p className='text-white text-sm'>Min stake 5 $JMPT</p>
+                                <p className='text-orange-400 text-sm'>{fl} User JOin this pool</p>
+                                <div className='flex mt-3'>
+                                    <p className='text-white text-xl font-semibold'>+20.0%<span className='text-white ps-2 text-sm font-light'>APR</span></p>
                                 </div>
-                                <div className=' flex place-content-between'>
-                                    <p className='text-gray-400 text-md'>Pool occupancy </p>
-                                    <span className='text-gray-400 text-sm block'>{(sum / 60000 * 100).toFixed(2)}%</span>
+                                <div className={`${(sum == 60000 || sum > 60000) ? 'opacity-50 relative' : ''}`}>
+                                    <div className={`${(sum == 60000 || sum > 60000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden'} `}>
+                                        <p className='m-auto text-white'>Pool is Full</p>
+                                    </div>
+                                    <div className=' flex place-content-between'>
+                                        <p className='text-gray-400 text-md'>Pool occupancy </p>
+                                        <span className='text-gray-400 text-sm block'>{(sum / 60000 * 100).toFixed(2)}%</span>
+                                    </div>
+                                    <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
+                                        <div className={`  h-1 ${(sum / 60000 * 100 === '0' || sum / 60000 * 100 < '33') ? 'bg-blue-700' : (sum / 60000 * 100 === '34' || sum / 60000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum / 60000 * 100 + '%' }}></div>
+                                    </div>
+                                    <div className='flex mt-2'>
+                                        <p className='text-gray-400 text-md'>${sum}  / 60000 </p>
+                                    </div>
                                 </div>
-                                <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`  h-1 ${(sum / 60000 * 100 === '0' || sum / 60000 * 100 < '33') ? 'bg-blue-700' : (sum / 60000 * 100 === '34' || sum / 60000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum / 60000 * 100 + '%' }}></div>
-                                </div>
-                                <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>${sum}  / 60000 </p>
-                                </div>
+                                <button className='example_box-btn w-full' name='TaskOnNFT' totalvalue='60000' per='20' onClick={viewall} >View All</button>
                             </div>
-                            <button className='example_box-btn w-full' name='TaskOnNFT' totalvalue='60000' per='20' onClick={viewall} >View All</button>
                         </div>
-                    </div>
-                    <div className='example_box text-start p-0 overflow-hidden'>
-                        <div className='p-2 stck-bg'>
-                            <h2 className='text-white'>TaksOn NFT</h2>
-                        </div>
-                        <div className='p-2'>
-                            <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
-                            <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
-                           <p className='text-orange-400 text-sm'>{fl1} User JOin this pool</p>
-                            <div className='flex mt-3'>
-                                <p className='text-white text-xl font-semibold'>+12.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
+                        <div className='example_box text-start p-0 overflow-hidden'>
+                            <div className='p-2 stck-bg'>
+                                <h2 className='text-white'>TaksOn NFT</h2>
                             </div>
-                            <div className={`${(sum2 == 15000 || sum2 > 15000) ? 'opacity-50 relative' : ''}`}>
-                                <div className={`${(sum2 == 15000 || sum2 > 15000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
-                                    <p className='m-auto text-white'>Pool is Full</p>
+                            <div className='p-2'>
+                                <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
+                                <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
+                                <p className='text-orange-400 text-sm'>{fl1} User JOin this pool</p>
+                                <div className='flex mt-3'>
+                                    <p className='text-white text-xl font-semibold'>+12.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
                                 </div>
-                                <div className=' flex place-content-between'>
-                                    <p className='text-gray-400 text-md'>Pool occupancy </p>
-                                    <span className='text-gray-400 text-sm block'>{(sum2 / 15000 * 100).toFixed(2)}%</span>
-                                </div>
+                                <div className={`${(sum2 == 15000 || sum2 > 15000) ? 'opacity-50 relative' : ''}`}>
+                                    <div className={`${(sum2 == 15000 || sum2 > 15000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
+                                        <p className='m-auto text-white'>Pool is Full</p>
+                                    </div>
+                                    <div className=' flex place-content-between'>
+                                        <p className='text-gray-400 text-md'>Pool occupancy </p>
+                                        <span className='text-gray-400 text-sm block'>{(sum2 / 15000 * 100).toFixed(2)}%</span>
+                                    </div>
 
-                                <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`  h-1 ${(sum2 / 15000 * 100 === '0' || sum2 / 15000 * 100 < '33') ? 'bg-blue-700' : (sum2 / 15000 * 100 === '34' || sum2 / 15000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum2 / 15000 * 100 + '%' }}></div>
+                                    <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
+                                        <div className={`  h-1 ${(sum2 / 15000 * 100 === '0' || sum2 / 15000 * 100 < '33') ? 'bg-blue-700' : (sum2 / 15000 * 100 === '34' || sum2 / 15000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum2 / 15000 * 100 + '%' }}></div>
+                                    </div>
+                                    <div className='flex mt-2'>
+                                        <p className='text-gray-400 text-md'>$ {sum2}  / 15000 </p>
+                                    </div>
                                 </div>
-                                <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum2}  / 15000 </p>
-                                </div>
+                                <button className='example_box-btn w-full' name='TaskOnNFT2' totalvalue='15000' per='12' onClick={viewall} >View All</button>
                             </div>
-                            <button className='example_box-btn w-full' name='TaskOnNFT2' totalvalue='15000' per='12' onClick={viewall} >View All</button>
                         </div>
-                    </div>
 
-                    <div className='example_box text-start p-0 overflow-hidden'>
-                        <div className='p-2 stck-bg2'>
-                            <h2 className='text-white'>Locked Pro+</h2>
-                        </div>
-                        <div className='p-2'>
-                            <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
-                            <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
-                           <p className='text-orange-400 text-sm'>{fl2} User JOin this pool</p>
-                            <div className='flex mt-3'>
-                                <p className='text-white text-xl font-semibold'>+15.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
+                        <div className='example_box text-start p-0 overflow-hidden'>
+                            <div className='p-2 stck-bg2'>
+                                <h2 className='text-white'>Locked Pro+</h2>
                             </div>
-                            <div className={`${(sum3 == 45000 || sum3 > 45000) ? 'opacity-50 relative' : ''}`}>
-                                <div className={`${(sum3 == 45000 || sum3 > 45000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
-                                    <p className='m-auto text-white'>Pool is Full</p>
+                            <div className='p-2'>
+                                <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
+                                <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
+                                <p className='text-orange-400 text-sm'>{fl2} User JOin this pool</p>
+                                <div className='flex mt-3'>
+                                    <p className='text-white text-xl font-semibold'>+15.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
                                 </div>
-                                <div className=' flex place-content-between'>
-                                    <p className='text-gray-400 text-md'>Pool occupancy </p>
-                                    <span className='text-gray-400 text-sm block'>{(sum3 / 45000 * 100).toFixed(2)}%</span>
-                                </div>
+                                <div className={`${(sum3 == 45000 || sum3 > 45000) ? 'opacity-50 relative' : ''}`}>
+                                    <div className={`${(sum3 == 45000 || sum3 > 45000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
+                                        <p className='m-auto text-white'>Pool is Full</p>
+                                    </div>
+                                    <div className=' flex place-content-between'>
+                                        <p className='text-gray-400 text-md'>Pool occupancy </p>
+                                        <span className='text-gray-400 text-sm block'>{(sum3 / 45000 * 100).toFixed(2)}%</span>
+                                    </div>
 
-                                <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`  h-1 ${(sum3 / 45000 * 100 === '0' || sum3 / 45000 * 100 < '33') ? 'bg-blue-700' : (sum3 / 45000 * 100 === '34' || sum3 / 45000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum3 / 45000 * 100 + '%' }}></div>
+                                    <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
+                                        <div className={`  h-1 ${(sum3 / 45000 * 100 === '0' || sum3 / 45000 * 100 < '33') ? 'bg-blue-700' : (sum3 / 45000 * 100 === '34' || sum3 / 45000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum3 / 45000 * 100 + '%' }}></div>
+                                    </div>
+                                    <div className='flex mt-2'>
+                                        <p className='text-gray-400 text-md'>$ {sum3}  / 45000 </p>
+                                    </div>
                                 </div>
-                                <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum3}  / 45000 </p>
-                                </div>
+                                <button className='example_box-btn w-full' name='LockedPro+' totalvalue='45000' per='15' onClick={viewall} >View All</button>
                             </div>
-                            <button className='example_box-btn w-full' name='LockedPro+' totalvalue='45000' per='15' onClick={viewall} >View All</button>
+                        </div>
+                        <div className='example_box text-start p-0 overflow-hidden'>
+                            <div className='p-2 stck-bg2'>
+                                <h2 className='text-white'>Locked Stater+</h2>
+                            </div>
+                            <div className='p-2'>
+                                <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
+                                <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
+                                <p className='text-orange-400 text-sm'>{fl3} User JOin this pool</p>
+                                <div className='flex mt-3'>
+                                    <p className='text-white text-xl font-semibold'>+25.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
+                                </div>
+                                <div className={`${(sum4 == 60000 || sum4 > 60000) ? 'opacity-50 relative' : ''}`}>
+                                    <div className={`${(sum4 == 60000 || sum4 > 60000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
+                                        <p className='m-auto text-white'>Pool is Full</p>
+                                    </div>
+                                    <div className=' flex place-content-between'>
+                                        <p className='text-gray-400 text-md'>Pool occupancy </p>
+                                        <span className='text-gray-400 text-sm block'>{(sum4 / 60000 * 100).toFixed(2)}%</span>
+                                    </div>
+                                    <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
+                                        <div className={`  h-1 ${(sum4 / 60000 * 100 === '0' || sum4 / 60000 * 100 < '33') ? 'bg-blue-700' : (sum4 / 60000 * 100 === '34' || sum4 / 60000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum4 / 60000 * 100 + '%' }}></div>
+                                    </div>
+                                    <div className='flex mt-2'>
+                                        <p className='text-gray-400 text-md'>$ {sum4}  / 60000 </p>
+                                    </div>
+                                </div>
+                                <button className='example_box-btn w-full' name='LockedStarter+' totalvalue='60000' per='25' onClick={viewall} >View All</button>
+                            </div>
+                        </div>
+                        <div className='example_box text-start p-0 overflow-hidden'>
+                            <div className='p-2 stck-bg2'>
+                                <h2 className='text-white'>Locked Stater+</h2>
+                            </div>
+                            <div className='p-2'>
+                                <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
+                                <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
+                                <p className='text-orange-400 text-sm'>{fl4} User JOin this pool</p>
+                                <div className='flex mt-3'>
+                                    <p className='text-white text-xl font-semibold'>+24.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
+                                </div>
+                                <div className={`${(sum5 == 60000 || sum5 > 60000) ? 'opacity-50 relative' : ''}`}>
+                                    <div className={`${(sum5 == 60000 || sum5 > 60000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
+                                        <p className='m-auto text-white'>Pool is Full</p>
+                                    </div>
+                                    <div className=' flex place-content-between'>
+                                        <p className='text-gray-400 text-md'>Pool occupancy </p>
+                                        <span className='text-gray-400 text-sm block'>{(sum5 / 60000 * 100).toFixed(2)}%</span>
+                                    </div>
+                                    <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
+                                        <div className={`  h-1 ${(sum5 / 60000 * 100 === '0' || sum5 / 60000 * 100 < '33') ? 'bg-blue-700' : (sum5 / 60000 * 100 === '34' || sum5 / 60000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum5 / 60000 * 100 + '%' }}></div>
+                                    </div>
+                                    <div className='flex mt-2'>
+                                        <p className='text-gray-400 text-md'>$ {sum5}  / 60000 </p>
+                                    </div>
+                                </div>
+                                <button className='example_box-btn w-full' name='LockedStater+2' totalvalue='60000' per='24' onClick={viewall} >View All</button>
+                            </div>
+                        </div>
+                        <div className='example_box text-start p-0 overflow-hidden'>
+                            <div className='p-2 stck-bg2'>
+                                <h2 className='text-white'>Locked Gainer+</h2>
+                            </div>
+                            <div className='p-2'>
+                                <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
+                                <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
+                                <p className='text-orange-400 text-sm'>{fl5} User JOin this pool</p>
+                                <div className='flex mt-3'>
+                                    <p className='text-white text-xl font-semibold'>+12.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
+                                </div>
+                                <div className={`${(sum6 == 60000 || sum6 > 60000) ? 'opacity-50 relative' : ''}`}>
+                                    <div className={`${(sum6 == 60000 || sum6 > 60000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
+                                        <p className='m-auto text-white'>Pool is Full</p>
+                                    </div>
+                                    <div className=' flex place-content-between'>
+                                        <p className='text-gray-400 text-md'>Pool occupancy </p>
+                                        <span className='text-gray-400 text-sm block'>{(sum6 / 60000 * 100).toFixed(2)}%</span>
+                                    </div>
+                                    <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
+                                        <div className={`  h-1 ${(sum6 / 60000 * 100 === '0' || sum6 / 60000 * 100 < '33') ? 'bg-blue-700' : (sum6 / 60000 * 100 === '34' || sum6 / 60000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum6 / 60000 * 100 + '%' }}></div>
+                                    </div>
+                                    <div className='flex mt-2'>
+                                        <p className='text-gray-400 text-md'>$ {sum6}  / 60000 </p>
+                                    </div>
+                                </div>
+                                <button className='example_box-btn w-full' name='LockedGainer+' totalvalue='60000' per='12' onClick={viewall} >View All</button>
+                            </div>
+                        </div>
+                        <div className='example_box text-start p-0 overflow-hidden'>
+                            <div className='p-2 stck-bg'>
+                                <h2 className='text-white'>Fuild Pro</h2>
+                            </div>
+                            <div className='p-2'>
+                                <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
+                                <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
+                                <p className='text-orange-400 text-sm'>{fl6} User JOin this pool</p>
+                                <div className='flex mt-3'>
+                                    <p className='text-white text-xl font-semibold'>+10.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
+                                </div>
+                                <div className={`${(sum7 == 10000 || sum7 > 10000) ? 'opacity-50 relative' : ''}`}>
+                                    <div className={`${(sum7 == 10000 || sum7 > 10000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
+                                        <p className='m-auto text-white'>Pool is Full</p>
+                                    </div>
+                                    <div className=' flex place-content-between'>
+                                        <p className='text-gray-400 text-md'>Pool occupancy </p>
+                                        <span className='text-gray-400 text-sm block'>{(sum7 / 10000 * 100).toFixed(2)}%</span>
+                                    </div>
+                                    <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
+                                        <div className={`  h-1 ${(sum7 / 10000 * 100 === '0' || sum7 / 10000 * 100 < '33') ? 'bg-blue-700' : (sum7 / 10000 * 100 === '34' || sum7 / 10000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum7 / 10000 * 100 + '%' }}></div>
+                                    </div>
+                                    <div className='flex mt-2'>
+                                        <p className='text-gray-400 text-md'>$ {sum7}  / 10000  </p>
+                                    </div>
+                                </div>
+                                <button className='example_box-btn w-full' name='FuildPro' totalvalue='10000' per='10' onClick={viewall} >View All</button>
+                            </div>
+                        </div>
+                        <div className='example_box text-start p-0 overflow-hidden'>
+                            <div className='p-2 stck-bg2'>
+                                <h2 className='text-white'>Fuild Stater</h2>
+                            </div>
+                            <div className='p-2'>
+                                <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
+                                <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
+                                <p className='text-orange-400 text-sm'>{fl7} User JOin this pool</p>
+                                <div className='flex mt-3'>
+                                    <p className='text-white text-xl font-semibold'>+5.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
+                                </div>
+                                <div className={`${(sum8 == 1000000 || sum8 > 1000000) ? 'opacity-50 relative' : ''}`}>
+                                    <div className={`${(sum8 == 1000000 || sum8 > 1000000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
+                                        <p className='m-auto text-white'>Pool is Full</p>
+                                    </div>
+                                    <div className=' flex place-content-between'>
+                                        <p className='text-gray-400 text-md'>Pool occupancy </p>
+                                        <span className='text-gray-400 text-sm block'>{(sum8 / 1000000 * 100).toFixed(2)}%</span>
+                                    </div>
+                                    <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
+                                        <div className={`  h-1 ${(sum8 / 1000000 * 100 === '0' || sum8 / 1000000 * 100 < '33') ? 'bg-blue-700' : (sum8 / 1000000 * 100 === '34' || sum8 / 1000000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum8 / 1000000 * 100 + '%' }}></div>
+                                    </div>
+                                    <div className='flex mt-2'>
+                                        <p className='text-gray-400 text-md'>$ {sum8}  / 1000000</p>
+                                    </div>
+                                </div>
+                                <button className='example_box-btn w-full' name='FluidStarter' totalvalue='1000000' per='5' onClick={viewall} >View All</button>
+                            </div>
+                        </div>
+                        <div className='example_box text-start p-0 overflow-hidden'>
+                            <div className='p-2 stck-bg'>
+                                <h2 className='text-white'>Fuild Gainer</h2>
+                            </div>
+                            <div className='p-2'>
+                                <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
+                                <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
+                                <p className='text-orange-400 text-sm'>{fl8} User JOin this pool</p>
+                                <div className='flex mt-3'>
+                                    <p className='text-white text-xl font-semibold'>+35.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
+                                </div>
+                                <div className={`${(sum9 == 1000000 || sum9 > 1000000) ? 'opacity-50 relative' : ''}`}>
+                                    <div className={`${(sum9 == 1000000 || sum9 > 1000000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
+                                        <p className='m-auto text-white'>Pool is Full</p>
+                                    </div>
+                                    <div className=' flex place-content-between'>
+                                        <p className='text-gray-400 text-md'>Pool occupancy </p>
+                                        <span className='text-gray-400 text-sm block'>{(sum9 / 1000000 * 100).toFixed(2)}%</span>
+                                    </div>
+                                    <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
+                                        <div className={`  h-1 ${(sum9 / 1000000 * 100 === '0' || sum9 / 1000000 * 100 < '33') ? 'bg-blue-700' : (sum9 / 1000000 * 100 === '34' || sum9 / 1000000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum9 / 1000000 * 100 + '%' }}></div>
+                                    </div>
+                                    <div className='flex mt-2'>
+                                        <p className='text-gray-400 text-md'>$ {sum9}  / 1000000 </p>
+                                    </div>
+                                </div>
+                                <button className='example_box-btn w-full' name='FuildGainer' totalvalue='1000000' per='35' onClick={viewall} >View All</button>
+                            </div>
                         </div>
                     </div>
-                    <div className='example_box text-start p-0 overflow-hidden'>
-                        <div className='p-2 stck-bg2'>
-                            <h2 className='text-white'>Locked Stater+</h2>
-                        </div>
-                        <div className='p-2'>
-                            <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
-                            <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
-                           <p className='text-orange-400 text-sm'>{fl3} User JOin this pool</p>
-                            <div className='flex mt-3'>
-                                <p className='text-white text-xl font-semibold'>+25.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
-                            </div>
-                            <div className={`${(sum4 == 60000 || sum4 > 60000) ? 'opacity-50 relative' : ''}`}>
-                                <div className={`${(sum4 == 60000 || sum4 > 60000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
-                                    <p className='m-auto text-white'>Pool is Full</p>
-                                </div>
-                                <div className=' flex place-content-between'>
-                                    <p className='text-gray-400 text-md'>Pool occupancy </p>
-                                    <span className='text-gray-400 text-sm block'>{(sum4 / 60000 * 100).toFixed(2)}%</span>
-                                </div>
-                                <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`  h-1 ${(sum4 / 60000 * 100 === '0' || sum4 / 60000 * 100 < '33') ? 'bg-blue-700' : (sum4 / 60000 * 100 === '34' || sum4 / 60000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum4 / 60000 * 100 + '%' }}></div>
-                                </div>
-                                <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum4}  / 60000 </p>
-                                </div>
-                            </div>
-                            <button className='example_box-btn w-full' name='LockedStarter+' totalvalue='60000' per='25' onClick={viewall} >View All</button>
-                        </div>
-                    </div>
-                    <div className='example_box text-start p-0 overflow-hidden'>
-                        <div className='p-2 stck-bg2'>
-                            <h2 className='text-white'>Locked Stater+</h2>
-                        </div>
-                        <div className='p-2'>
-                            <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
-                            <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
-                           <p className='text-orange-400 text-sm'>{fl4} User JOin this pool</p>
-                            <div className='flex mt-3'>
-                                <p className='text-white text-xl font-semibold'>+24.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
-                            </div>
-                            <div className={`${(sum5 == 60000 || sum5 > 60000) ? 'opacity-50 relative' : ''}`}>
-                                <div className={`${(sum5 == 60000 || sum5 > 60000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
-                                    <p className='m-auto text-white'>Pool is Full</p>
-                                </div>
-                                <div className=' flex place-content-between'>
-                                    <p className='text-gray-400 text-md'>Pool occupancy </p>
-                                    <span className='text-gray-400 text-sm block'>{(sum5 / 60000 * 100).toFixed(2)}%</span>
-                                </div>
-                                <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`  h-1 ${(sum5 / 60000 * 100 === '0' || sum5 / 60000 * 100 < '33') ? 'bg-blue-700' : (sum5 / 60000 * 100 === '34' || sum5 / 60000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum5 / 60000 * 100 + '%' }}></div>
-                                </div>
-                                <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum5}  / 60000 </p>
-                                </div>
-                            </div>
-                            <button className='example_box-btn w-full' name='LockedStater+2' totalvalue='60000' per='24' onClick={viewall} >View All</button>
-                        </div>
-                    </div>
-                    <div className='example_box text-start p-0 overflow-hidden'>
-                        <div className='p-2 stck-bg2'>
-                            <h2 className='text-white'>Locked Gainer+</h2>
-                        </div>
-                        <div className='p-2'>
-                            <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
-                            <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
-                           <p className='text-orange-400 text-sm'>{fl5} User JOin this pool</p>
-                            <div className='flex mt-3'>
-                                <p className='text-white text-xl font-semibold'>+12.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
-                            </div>
-                            <div className={`${(sum6 == 60000 || sum6 > 60000) ? 'opacity-50 relative' : ''}`}>
-                                <div className={`${(sum6 == 60000 || sum6 > 60000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
-                                    <p className='m-auto text-white'>Pool is Full</p>
-                                </div>
-                                <div className=' flex place-content-between'>
-                                    <p className='text-gray-400 text-md'>Pool occupancy </p>
-                                    <span className='text-gray-400 text-sm block'>{(sum6 / 60000 * 100).toFixed(2)}%</span>
-                                </div>
-                                <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`  h-1 ${(sum6 / 60000 * 100 === '0' || sum6 / 60000 * 100 < '33') ? 'bg-blue-700' : (sum6 / 60000 * 100 === '34' || sum6 / 60000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum6 / 60000 * 100 + '%' }}></div>
-                                </div>
-                                <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum6}  / 60000 </p>
-                                </div>
-                            </div>
-                            <button className='example_box-btn w-full' name='LockedGainer+' totalvalue='60000' per='12' onClick={viewall} >View All</button>
-                        </div>
-                    </div>
-                    <div className='example_box text-start p-0 overflow-hidden'>
-                        <div className='p-2 stck-bg'>
-                            <h2 className='text-white'>Fuild Pro</h2>
-                        </div>
-                        <div className='p-2'>
-                            <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
-                            <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
-                           <p className='text-orange-400 text-sm'>{fl6} User JOin this pool</p>
-                            <div className='flex mt-3'>
-                                <p className='text-white text-xl font-semibold'>+10.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
-                            </div>
-                            <div className={`${(sum7 == 10000 || sum7 > 10000) ? 'opacity-50 relative' : ''}`}>
-                                <div className={`${(sum7 == 10000 || sum7 > 10000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
-                                    <p className='m-auto text-white'>Pool is Full</p>
-                                </div>
-                                <div className=' flex place-content-between'>
-                                    <p className='text-gray-400 text-md'>Pool occupancy </p>
-                                    <span className='text-gray-400 text-sm block'>{(sum7 / 10000 * 100).toFixed(2)}%</span>
-                                </div>
-                                <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`  h-1 ${(sum7 / 10000 * 100 === '0' || sum7 / 10000 * 100 < '33') ? 'bg-blue-700' : (sum7 / 10000 * 100 === '34' || sum7 / 10000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum7 / 10000 * 100 + '%' }}></div>
-                                </div>
-                                <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum7}  / 10000  </p>
-                                </div>
-                            </div>
-                            <button className='example_box-btn w-full' name='FuildPro' totalvalue='10000' per='10' onClick={viewall} >View All</button>
-                        </div>
-                    </div>
-                    <div className='example_box text-start p-0 overflow-hidden'>
-                        <div className='p-2 stck-bg2'>
-                            <h2 className='text-white'>Fuild Stater</h2>
-                        </div>
-                        <div className='p-2'>
-                            <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
-                            <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
-                           <p className='text-orange-400 text-sm'>{fl7} User JOin this pool</p>
-                            <div className='flex mt-3'>
-                                <p className='text-white text-xl font-semibold'>+5.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
-                            </div>
-                            <div className={`${(sum8 == 1000000 || sum8 > 1000000) ? 'opacity-50 relative' : ''}`}>
-                                <div className={`${(sum8 == 1000000 || sum8 > 1000000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
-                                    <p className='m-auto text-white'>Pool is Full</p>
-                                </div>
-                                <div className=' flex place-content-between'>
-                                    <p className='text-gray-400 text-md'>Pool occupancy </p>
-                                    <span className='text-gray-400 text-sm block'>{(sum8 / 1000000 * 100).toFixed(2)}%</span>
-                                </div>
-                                <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`  h-1 ${(sum8 / 1000000 * 100 === '0' || sum8 / 1000000 * 100 < '33') ? 'bg-blue-700' : (sum8 / 1000000 * 100 === '34' || sum8 / 1000000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum8 / 1000000 * 100 + '%' }}></div>
-                                </div>
-                                <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum8}  / 1000000</p>
-                                </div>
-                            </div>
-                            <button className='example_box-btn w-full' name='FluidStarter' totalvalue='1000000' per='5' onClick={viewall} >View All</button>
-                        </div>
-                    </div>
-                    <div className='example_box text-start p-0 overflow-hidden'>
-                        <div className='p-2 stck-bg'>
-                            <h2 className='text-white'>Fuild Gainer</h2>
-                        </div>
-                        <div className='p-2'>
-                            <p className='text-gray-400 text-sm'>Collect earnings in 6 months</p>
-                            <p className='text-gray-400 text-sm'>Min stake 5 $JMPT</p>
-                           <p className='text-orange-400 text-sm'>{fl8} User JOin this pool</p>
-                            <div className='flex mt-3'>
-                                <p className='text-white text-xl font-semibold'>+35.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
-                            </div>
-                            <div className={`${(sum9 == 1000000 || sum9 > 1000000) ? 'opacity-50 relative' : ''}`}>
-                                <div className={`${(sum9 == 1000000 || sum9 > 1000000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
-                                    <p className='m-auto text-white'>Pool is Full</p>
-                                </div>
-                                <div className=' flex place-content-between'>
-                                    <p className='text-gray-400 text-md'>Pool occupancy </p>
-                                    <span className='text-gray-400 text-sm block'>{(sum9 / 1000000 * 100).toFixed(2)}%</span>
-                                </div>
-                                <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                    <div className={`  h-1 ${(sum9 / 1000000 * 100 === '0' || sum9 / 1000000 * 100 < '33') ? 'bg-blue-700' : (sum9 / 1000000 * 100 === '34' || sum9 / 1000000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum9 / 1000000 * 100 + '%' }}></div>
-                                </div>
-                                <div className='flex mt-2'>
-                                    <p className='text-gray-400 text-md'>$ {sum9}  / 1000000 </p>
-                                </div>
-                            </div>
-                            <button className='example_box-btn w-full' name='FuildGainer' totalvalue='1000000' per='35' onClick={viewall} >View All</button>
-                        </div>
-                    </div>
+                    <h3 className='text-white font-bold text-xl my-5'>Close pools</h3>
                 </div>
-                <h3 className='text-white font-bold text-xl my-5'>Close pools</h3>
             </div>
         </>
     )

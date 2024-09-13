@@ -26,6 +26,7 @@ function Create() {
     const [options, setOptions] = useState([]);
     const [stackmin, setMinLimit] = useState([0]);
     const [stackmax, setMaxLimit] = useState([0]);
+    const [per, setPer] = useState([0]);
     const [stackmain, setMainLimit] = useState([]);
     const handleCheckboxChange = (event) => {
         setPercentage(event.target.value);
@@ -90,6 +91,7 @@ function Create() {
 
                     setMinLimit(stacklimit.minstack);
                     setMaxLimit(stacklimit.maxstack);
+                    setPer(stacklimit.per);
                 }
                 setOptions(namesArray);
                 setMainLimit(stacklimit);
@@ -164,7 +166,7 @@ function Create() {
 
                                                     </select>
                                                     <div className=''>
-
+                                                    <p className='text-gray-400 text-sm '>This pool give a  <span className='text-cyan-600'>{per}%</span> APR</p>
                                                         <p className='text-gray-400 text-sm '>You can stack minimum <span className='text-cyan-600'>${stackmin}</span>&nbsp;& Max <span className='text-cyan-600'>${stackmax}</span></p>
 
                                                     </div>

@@ -55,6 +55,7 @@ function Read() {
                 newestOnTop={false}
             />
             <Banner heading="User Rank List" coheading="Editeble Data" />
+            <div className='mainbg'>
             <div className='container mx-auto my-5'>
             <Link to="/portfolio"><button className="back_com-tn btn  ">Go Back</button></Link>
                 <div className='pb-5 mb-5 border-b border-zinc-700 sm:flex sm:place-content-between'>
@@ -131,6 +132,7 @@ function Read() {
                 <Link to="/estimateearnings"><button className='ms-auto me-3 btn bg-cyan-600 py-1 px-4 rounded-full font-light text-white '>Estimate earnings</button></Link>
                 
                 </div>
+            </div>
             </div>
         </>
     )

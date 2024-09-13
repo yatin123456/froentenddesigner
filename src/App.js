@@ -17,6 +17,8 @@ import Stckboard from './component/demos/stckboard/Stckboard';
 import Allparticipent from './component/demos/stckboard/Allparticipent'
 import Cryptoitem from './component/demos/Cryptoitem';
 import Estimateearnings from './component/demos/stckboard/Estimateearnings';
+import Admin from './component/backend/Admin';
+import Panel from './component/backend/panel/Panel'
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
     <Header/>
           <Routes>
             <Route  path="/" element={<About />}></Route>
+            <Route  path="/admin" element={<Admin />}></Route>
+            <Route  path="/panel" element={<Panel />}></Route>
             <Route  path="/resume" element={<Resume />}></Route>
             <Route  path="/portfolio" element={<Portfolio />}></Route>
             <Route  path="/contact" element={<Contact />}></Route>

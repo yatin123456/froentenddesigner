@@ -39,16 +39,23 @@
 }
 
 body {
-   background-color: #222222;
+   background-color: rgb(22, 24, 39) !important;
 
 }
-
+.page_banner{
+   background-color: rgba(30, 33, 53, 0.8);
+}
 .poppins-regular {
    font-family: "Poppins", sans-serif;
    font-weight: 400;
    font-style: normal;
 }
-
+.mainbg{
+   background-image: url(../src/images/sky.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   width: 100%;
+}
 .spiner {
    width: 200px;
    height: 200px;
@@ -56,7 +63,17 @@ body {
    left: -8%;
    transform: rotate(225deg);
 }
-
+.example_box{
+   /* padding: 16px; */
+   background: rgba(30, 33, 53, 0.8);
+   backdrop-filter: blur(15px);
+   /* border-radius: 16px; */
+   box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px, rgba(0, 0, 0, 0.2) 0px 2px 4px -1px, rgba(0, 0, 0, 0.14) 0px 4px 5px 0px;
+   /* margin-bottom: 12px; */
+   -webkit-box-align: center;
+   align-items: center;
+   cursor: pointer;
+}
 .spiner2 {
    width: 200px;
    height: 200px;

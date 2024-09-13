@@ -2,7 +2,7 @@ import React from 'react'
 
 function Banner(props) {
   return (
-    <div className='page_banner bg-zinc-800  my-5 border-y border-zinc-700'>
+    <div className='page_banner bg-zinc-800  border-y border-zinc-700'>
     <div className='container mx-auto '>
     <div>
     <div className='flex items-center'>

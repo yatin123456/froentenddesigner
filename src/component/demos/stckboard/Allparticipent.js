@@ -51,7 +51,8 @@ function Allparticipent() {
     return (
         <>
             <Banner heading={`pool:- ${dname}`} coheading="Participants" />
-            <div className='container mx-auto'>
+            <div className='mainbg'>
+            <div className='container mx-auto py-5'>
                 <Link to="/stackboard"><button className="back_com-tn btn  ">Go Back</button></Link>
                 <div className='my-5'>
                     <div className='example_box text-start'>
@@ -90,6 +91,7 @@ function Allparticipent() {
                                                 {data.map((item) => (
                                                     <div className='flex justify-between border-b border-zinc-600 py-3' key={item.id}>
                                                         <div className='text-white flex items-center'>
+                                                          
                                                             <p className='flex text-wrap w-5 h-5 rounded-full bg-orange-500  font-semibold text-xs text-center'><span className='m-auto'>{item.id}</span></p>
                                                             <p className='ms-2'>{item.name}</p>
                                                         </div>
@@ -104,6 +106,7 @@ function Allparticipent() {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </>
     )

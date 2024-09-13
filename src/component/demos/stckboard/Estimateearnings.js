@@ -30,7 +30,8 @@ function Estimateearnings() {
     return (
         <>
             <Banner heading="Estimate Your Stacking" coheading="Calculater" />
-            <div className='container mx-auto my-5'>
+            <div className='mainbg'>
+            <div className='container mx-auto py-5'>
                 <Link to="/read"><button className="back_com-tn btn">Go Back</button></Link>
                 <div className='example_box text-start xl:w-1/2 md:w-1/2'>
                     <div className='flex justify-between align-middle'>
@@ -41,13 +42,13 @@ function Estimateearnings() {
                         <button className="back_com-tn mb-0 h-fit btn text-sm ">Buy $ Now</button>
                     </div>
                 </div>
-                <div className='example_box text-start my-3'>
+                <div className='example_box  text-start my-3'>
                     <h3 className='text-white text-2xl'>Estimate earnings</h3>
                     <p className='text-xs text-gray-400 '>Estimated values are for informational purposes only.</p>
 
                     <div className='sm:pe-2 sm:w-1/2 relative mt-5 mb-3'>
-                        <label className='block text-gray-400 absolute -top-2 px-2 text-xs bg-zinc-800 left-3'>Stack Amount</label>
-                        <input onChange={(e) => setPoint(e.target.value)} type='text' id='point' name='point' className='bg-zinc-800 border border-zinc-700 px-2 py-2 rounded w-full text-white' />
+                        <label className='block text-gray-400 absolute -top-2 px-2 text-xs bg-zinc-800 left-3 rounded-sm'>Stack Amount</label>
+                        <input onChange={(e) => setPoint(e.target.value)} type='text' id='point' name='point' className='bg-transparent border border-zinc-700 px-2 py-2 rounded w-full text-white' />
                         <span className='absolute right-4 text-orange-600 text-xl top-2'>$</span>
                     </div>
 
@@ -57,7 +58,7 @@ function Estimateearnings() {
                         ) : (
                             <>
                                 {pool.map(item => (
-                                    <div className={`pool_box ${item.per === higher ? 'toppool' : ''}`}>
+                                    <div className={`pool_box example_box rounded-md ${item.per === higher ? 'toppool' : ''}`}>
                                         <div className='flex items-center justify-between'>
                                             <div className=''>
                                                 <div className=' flex '>
@@ -65,7 +66,7 @@ function Estimateearnings() {
                                                         <img className='w-10' src={coinicon} />
                                                     </div>
                                                     <div>
-                                                        <h3 className='text-white text-xl mb-0'>{item.name}</h3>
+                                                        <h3 className='text-white text-xl text-start mb-0'>{item.name}</h3>
                                                         <p className='m-0 text-sm text-zinc-400 '>APR +{item.per}% | Lock for {item.duration} </p>
                                                     </div>
                                                 </div>
@@ -91,6 +92,7 @@ function Estimateearnings() {
 
                     </div>
                 </div>
+            </div>
             </div>
         </>
     )
