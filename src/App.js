@@ -19,6 +19,9 @@ import Cryptoitem from './component/demos/Cryptoitem';
 import Estimateearnings from './component/demos/stckboard/Estimateearnings';
 import Admin from './component/backend/Admin';
 import Panel from './component/backend/panel/Panel'
+import Demolist from './component/backend/panel/tabs/Demolist';
+import UserData from './component/backend/panel/tabs/UserData'
+import Pooldata from './component/backend/panel/tabs/Pooldata'
 
 function App() {
   return (
@@ -43,6 +46,9 @@ function App() {
             <Route  path="/allparticipent" element={<Allparticipent />}></Route>
             <Route  path="/cryptoitem/:id" element={<Cryptoitem />}></Route>
             <Route  path="/estimateearnings" element={<Estimateearnings />}></Route>
+            <Route  path="/demolist" element={<Demolist />}></Route>
+            <Route  path="/userdata" element={<UserData />}></Route>
+            <Route  path="/pooldata" element={<Pooldata />}></Route>
           </Routes>
           <Footer/>
         </BrowserRouter>

@@ -65,7 +65,7 @@ function Read() {
 
                 {(!data.length) > 0 ? (
                     <div className='py-10'>
-                        <p className='text-slate-500 text-center w-full'>No Data Available...</p>
+                        <p className='text-white text-center w-full'>No Data Available...</p>
                     </div>
                 ) : (
                     <>

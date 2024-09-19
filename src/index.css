@@ -56,73 +56,137 @@ body {
    background-repeat: no-repeat;
    width: 100%;
 }
-.spiner {
-   width: 200px;
-   height: 200px;
-   opacity: 0.3;
-   left: -8%;
-   transform: rotate(225deg);
+
+
+.textwrapdec,
+.textwraptit{
+   white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+ 
+}
+.textwrapdec{
+   max-width: 300px;
+}
+
+.textwraptit{
+   max-width: 100px;
 }
 .example_box{
-   /* padding: 16px; */
-   background: rgba(30, 33, 53, 0.8);
-   backdrop-filter: blur(15px);
-   /* border-radius: 16px; */
-   box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px, rgba(0, 0, 0, 0.2) 0px 2px 4px -1px, rgba(0, 0, 0, 0.14) 0px 4px 5px 0px;
-   /* margin-bottom: 12px; */
-   -webkit-box-align: center;
-   align-items: center;
-   cursor: pointer;
+   background-color: rgba(30, 33, 53, 0.8);
+   backdrop-filter: blur(6px);
+   -webkit-backdrop-filter: blur(6px);
 }
-.spiner2 {
-   width: 200px;
-   height: 200px;
-   opacity: 0.3;
-   right: -8%;
-   transform: rotate(225deg);
-}
-.menu_link{
-   position: relative;
-}
-.menu_link.active::after{
-   content: '';
-   width: 50%;
-   height: 2px;
-   background-color: #0891b2;
-   position: absolute;
-   bottom: -2px;
-   left: 0;
-}
-@keyframes spin {
-   from {
-      transform: rotate(0deg);
-   }
-
-   to {
-      transform: rotate(360deg);
-   }
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.c_bar a {
-   width: 100%;
-   padding: 10px 0;
-   display: block;
+/* Fade-in animation */
+.fade-in {
+  opacity: 1;
+  visibility: visible;
+  animation: fadeIn 0.3s ease forwards;
 }
 
+/* Fade-out animation */
+.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  animation: fadeOut 0.3s ease forwards;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 80%;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Animation to slide and fade the modal content */
+.fade-in .modal-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-out .modal-content {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Keyframes for fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Keyframes for fade-out */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Button to open the modal */
+.open-modal-btn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Button to close the modal */
+.close-modal-btn {
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.open-modal-btn:hover,
+.close-modal-btn:hover {
+  opacity: 0.8;
+}
 .stck-bg {
    background: linear-gradient(270deg, rgba(199, 142, 0, 0.3) 0%, rgba(199, 142, 0, 0) 100%);
 }
 
 .stck-bg2 {
    background: linear-gradient(270deg, rgba(25, 190, 205, 0.3) 0%, rgba(25, 190, 205, 0) 100%);
-}
-
-.ex-box-custome {
-   background: rgba( 255, 255, 255, 0 );
-   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-   backdrop-filter: blur( 20px );
-   -webkit-backdrop-filter: blur( 20px );
-   border-radius: 10px;
-   border: 1px solid rgba( 255, 255, 255, 0.18 );
-   
 }

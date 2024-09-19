@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Banner from '../pagebanner/Banner';
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { BsArrowLeft } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
