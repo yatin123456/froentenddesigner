@@ -6,24 +6,10 @@ import ItemModal from "../tabs/ItemModal";
 
 function Demolist() {
 
-  // const [demolist, setDemolist] = useState([]);
   const [items, setItems] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
-  // const [title, setTitle] = useState('');
-  // const [description, setDescription] = useState('');
-  // const [route, setRoute] = useState('');
-  // const openModal = () => {
-  //   setIsModalOpen(true);
-  //   setIsAnimating(true);
-  // };
-  // const closeModal = () => {
-  //   setIsAnimating(false);
-  //   setTimeout(() => {
-  //     setIsModalOpen(false);
-  //   }, 300);
-  // };
   const fetchItems = async () => {
     try {
       const response = await axios.get("https://66e5498b5cc7f9b6273ce150.mockapi.io/demolist");

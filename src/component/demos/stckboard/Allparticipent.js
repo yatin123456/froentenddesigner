@@ -17,7 +17,7 @@ function Allparticipent() {
     const [sum, setSum] = useState();
     const [filteredData, setFilteredData] = useState([]); // State to hold filtered data
     const [totalPoints, setTotalPoints] = useState(0);
- 
+    console.log('totla',fetchedData)
     function getData() {
         axios
             .get("https://667eaaa0f2cb59c38dc69de2.mockapi.io/finaldata")
