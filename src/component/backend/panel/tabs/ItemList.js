@@ -22,19 +22,19 @@ function ItemList({ items, onEdit, onDelete }) {
       <table className="custom-table w-full">
         <thead className='bg-gray-900'>
 
-          {items.map((item) => (
+          {items.slice(0, 1).map((item) => (
             <tr>
               <th className="border-zinc-700 border text-white font-light text-sm p-2">ID</th>
               {item.title ? (
                 <>
-                  <th className="border-zinc-700 border text-white font-light text-sm p-2">Title</th>
+                  <th className="border-zinc-700 border text-white font-light text-sm p-2 text-start">Title</th>
                   <th className="border-zinc-700 border text-white font-light text-sm p-2 text-start">Description</th>
                   <th className="border-zinc-700 border text-white font-light text-sm p-2">Route Link</th>
                   <th className="border-zinc-700 border text-white font-light text-sm p-2">Status</th>
                 </>
-              ) : !items.name ? (
+              ) : item.email ? (
                 <>
-                  <th className="border-zinc-700 border text-white font-light text-sm p-2">Name</th>
+                  <th className="border-zinc-700 border text-white font-light text-sm p-2 text-start">Name</th>
                   <th className="border-zinc-700 border text-white font-light text-sm p-2">Email</th>
                   <th className="border-zinc-700 border text-white font-light text-sm p-2">Point</th>
                   <th className="border-zinc-700 border text-white font-light text-sm p-2">Stack</th>
@@ -42,7 +42,18 @@ function ItemList({ items, onEdit, onDelete }) {
                   <th className="border-zinc-700 border text-white font-light text-sm p-2">Status</th>
                 </>
               ) : (
-                <p>dsdsdsdsdsd</p>
+                <>
+                  <th className="border-zinc-700 border text-white font-light text-sm p-2 text-start">Name</th>
+                  <th className="border-zinc-700 border text-white font-light text-sm p-2">Capacity</th>
+                  <th className="border-zinc-700 border text-white font-light text-sm p-2">Min Stack</th>
+                  <th className="border-zinc-700 border text-white font-light text-sm p-2">Max Stack</th>
+                  <th className="border-zinc-700 border text-white font-light text-sm p-2">Per(%)</th>
+                 
+                  <th className="border-zinc-700 border text-white font-light text-sm p-2">Duration</th>
+                  <th className="border-zinc-700 border text-white font-light text-sm p-2">Status</th>
+                  </>
+                  
+
               )
               }
 
@@ -57,13 +68,13 @@ function ItemList({ items, onEdit, onDelete }) {
             <tr key={item.id}>
 
               <td className='border-zinc-700 border p-2 text-gray-300 text-sm  text-center'>{item.id}</td>
-              {!item.name ? (
+              {item.title ? (
                 <>
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.title}</td>
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwrapdec'>{item.description}</td>
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm '>{item.route}</td>
                 </>
-              ) : !item.title ? (
+              ) : item.email ? (
                 <>
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.name}</td>
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.email}</td>
@@ -71,7 +82,19 @@ function ItemList({ items, onEdit, onDelete }) {
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.stack}</td>
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.percentage}%</td>
                 </>
-              ) : (<p>dds</p>)}
+              ) : (
+                <>
+                  
+                  <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.symbol}</td>
+                  <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.totalvalue}</td>
+                  <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.minstack}</td>
+                  <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.maxstack}</td>
+                  <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.per}</td>
+                  
+                  <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.duration}</td>
+
+                </>
+              )}
 
               {(item.status === 'active') ? (
                 <td className='border-zinc-700 border p-2 text-gray-400 text-sm text-center'><span className='bg-green-900  w-fit text-[12px] rounded-md px-2  capitalize border border-green-700 text-green-400'>Active</span></td>
