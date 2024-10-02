@@ -125,10 +125,10 @@ function ItemModal({ isOpen, onClose, onSubmit, currentItem, animetion }) {
               <input value={totalvalue} onChange={(e) => setRoute(e.target.value)} type='text' id='stack' name='stack' className='bg-transparent border border-zinc-700 px-2 py-1 rounded w-full text-white' />
             </div>
             <div className=''>
-              <p>Minimum Stack {minstack}</p>
-              <p>Maximum Stack {maxstack}</p>
-              <p>APR (%) {per}</p>
-              <p>Duretion = {duration}</p>
+              <p className=" text-xs text-gray-500">Minimum Stack <span className="text-orange-600">{minstack}</span></p>
+              <p className=" text-xs text-gray-500">Maximum Stack <span className="text-orange-600">{maxstack}</span></p>
+              <p className=" text-xs text-gray-500">APR% <span className="text-orange-600">{per}</span></p>
+              <p className=" text-xs text-gray-500">Duretion = <span className="text-orange-600">{duration}</span></p>
             </div>
             </>
                ):''}

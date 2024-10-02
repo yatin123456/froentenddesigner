@@ -67,7 +67,7 @@ function ItemList({ items, onEdit, onDelete }) {
           {items.map((item) => (
             <tr key={item.id}>
 
-              <td className='border-zinc-700 border p-2 text-gray-300 text-sm  text-center'>{item.id}</td>
+              <td className='border-zinc-700 border p-2 text-gray-300 text-sm  text-center'><span className='text-white'>{item.id}</span></td>
               {item.title ? (
                 <>
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.title}</td>
