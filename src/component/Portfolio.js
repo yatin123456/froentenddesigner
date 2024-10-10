@@ -26,6 +26,7 @@ function Portfolio() {
           <div className='grid grid-rows-1 lg:grid-cols-2 md:grid-cols-2   sm:grid-cols-2 sm:gap-6 gap-3'>
             {demolist.map((item) => (
               <div className='example_box flex flex-col justify-between opac'>
+                 <p className='text-gray-400 text-xs absolute right-4 top-3 '>Skill {item.skill}%</p>
                 <div className='flex'>
                   <div className='ps-2'>
                     <BsReverseListColumnsReverse className='text-3xl text-cyan-600 mx-auto mt-1' />
@@ -33,6 +34,7 @@ function Portfolio() {
                   <div className='ps-3 text-start'>
                     <h5 className='text-white font-semibold uppercase'>{item.title}</h5>
                     <p className='text-gray-400 text-sm'>{item.description}</p>
+                   
                   </div>
                 </div>
                 <div className='text-end w-full'>

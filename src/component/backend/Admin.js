@@ -30,6 +30,7 @@ function Admin() {
             setError(prev => ({ ...prev, email: 'Email is incorrect' }));
             valid = false;
         }
+        
         if (password.trim() === '') {
             setError(prev => ({ ...prev, password: 'Password is required' }));
             valid = false;
@@ -37,6 +38,7 @@ function Admin() {
             setError(prev => ({ ...prev, password: 'Password is incorrect' }));
             valid = false;
         }
+        
         if (valid) {
             // Perform login logic here (e.g., API call)
             history('/panel')
@@ -72,9 +74,7 @@ function Admin() {
                                     <button onClick={handleSubmit} className="mx-auto  mt-5 mb-4 btn bg-cyan-600 py-1 px-4 rounded-full font-light text-white flex place-items-center  ">Login</button>
                                 </div>
                                 <p className='text-gray-400 text-xs text-center pt-2' >Do not attempt to login if you do not have credentials.</p>
-                                <div>
-
-                                </div>
+                               
 
 
 

@@ -10,6 +10,8 @@ function Demolist() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [demoid , setDemoid] = useState ('demomodel')
+  console.log('data', items)
   const fetchItems = async () => {
     try {
       const response = await axios.get("https://66e5498b5cc7f9b6273ce150.mockapi.io/demolist");
@@ -21,7 +23,6 @@ function Demolist() {
 
   // Open modal for creating or editing an item
   const handleOpenModal = (item = null) => {
-    console.log('click')
     setCurrentItem(item);
     setIsModalOpen(true);
     setIsAnimating(true)
@@ -47,9 +48,13 @@ function Demolist() {
   // Update an item
   const handleUpdateItem = async (updatedItem) => {
     try {
+    
       const response = await axios.put(`https://66e5498b5cc7f9b6273ce150.mockapi.io/demolist/${updatedItem.id}`, updatedItem);
+   
       setItems(items.map((item) => (item.id === updatedItem.id ? response.data : item)));
+      alert('Id', updatedItem.id)
       handleCloseModal();
+   
     } catch (error) {
       console.error("Error updating item", error);
     }
@@ -71,7 +76,7 @@ function Demolist() {
     <>
       <div className='flex justify-between align-middle  mb-1 mt-3 px-1  w-full'>
         <h1 className='text-white '>Demo List</h1>
-        <button className='m-0 text-white bg-cyan-600 px-2 rounded-sm' onClick={() => handleOpenModal()}>Add New</button>
+        <button className='m-0 text-white bg-cyan-600 px-2 rounded-sm'  onClick={() => handleOpenModal()}>Add New</button>
       </div>
       <div className='example_box p-0 text-start rounded-md overflow-hidden'>
 
@@ -87,8 +92,9 @@ function Demolist() {
           isOpen={isModalOpen}
           animetion={isAnimating}
           onClose={handleCloseModal}
-          onSubmit={currentItem ? handleUpdateItem : handleCreateItem}
+          demoOnSubmit={currentItem ? handleUpdateItem : handleCreateItem}
           currentItem={currentItem}
+          modelid ={demoid}
         />
       )}
       {/* {isModalOpen && (

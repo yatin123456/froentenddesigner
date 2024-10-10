@@ -55,12 +55,12 @@ function Create() {
 
         axios.post(
             "https://667eaaa0f2cb59c38dc69de2.mockapi.io/finaldata", {
-            name: name, email: email, point: point, position: position, file: file, pool: pool, currentDate: currentDate, stack: stack, percentage: percentage, header
+            name: name, email: email, point: point, position: position, file: file, pool: pool,  stack: stack, percentage: percentage, header
         })
-        axios.post(
-            "https://667eaaa0f2cb59c38dc69de2.mockapi.io/mycrudeapp", {
-            point: point, pool: pool, stack: stack, percentage: percentage
-        })
+        // axios.post(
+        //     "https://667eaaa0f2cb59c38dc69de2.mockapi.io/mycrudeapp", {
+        //         name: name, email: email, point: point, position: position, file: file, pool: pool,  stack: stack, percentage: percentage, header
+        // })
             .then(() => {
                 history('/read')
             });
@@ -136,7 +136,6 @@ function Create() {
                                         <option value="active">Active</option>
                                         <option value="notactive">Not Active</option>
                                     </select>
-
                                 </div>
                             </div>
                             <div className={`  ${(position === 'notactive' || position === 'null') ? 'w-full' : 'sm:w-1/2 sm:pe-2'} `}>
@@ -224,7 +223,10 @@ function Create() {
                                                                 <span className='m-auto text-white'>100%</span>
                                                             </div>
                                                         </div>
+                                                      
+                                                       
                                                     </div>
+                                                    <p className={` ${((point / 100 * 10) > stackmin)? 'hidden': ((point / 100 * 50) > stackmin)? 'hidden': ((point / 100 * 75) > stackmin) ? 'hidden' : ((point / 100 * 100) > stackmin) ? 'hidden' : 'text-red-600'  } text-sm `}>You are not aligeble for this pool </p>
                                                     <div className=''>
                                                         <p className='text-gray-400 text-sm '>You have stack your <span className='text-orange-400' >
                                                             {(point / 100 * percentage)}</span> coin</p>

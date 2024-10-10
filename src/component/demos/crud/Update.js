@@ -68,10 +68,10 @@ function Update() {
             },
 
         )
-        axios.put(`https://667eaaa0f2cb59c38dc69de2.mockapi.io/mycrudeapp/${id}`,
-            {
-                point: point, stack: stack, pool: pool, percentage: percentage
-            },)
+        // axios.put(`https://667eaaa0f2cb59c38dc69de2.mockapi.io/mycrudeapp/${id}`,
+        //     {
+        //         point: point, stack: stack, pool: pool, percentage: percentage
+        //     },)
             .then(() => {
                 navigate("/read")
             })

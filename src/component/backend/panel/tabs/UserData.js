@@ -10,6 +10,7 @@ function UserData() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [userid , setUserid] = useState ('usermodel')
   const fetchItems = async () => {
     try {
       const response = await axios.get("https://667eaaa0f2cb59c38dc69de2.mockapi.io/finaldata");
@@ -36,7 +37,7 @@ function UserData() {
   // Create a new item
   const handleCreateItem = async (newItem) => {
     try {
-      const response = await axios.post("https://667eaaa0f2cb59c38dc69de2.mockapi.io/finaldata", newItem);
+      const response = await axios.post("https://667eaaa0f2cb59c38dc69de2.mockapi.io/finaldata", newItem);     
       setItems([...items, response.data]);
       handleCloseModal();
     } catch (error) {
@@ -47,6 +48,7 @@ function UserData() {
   // Update an item
   const handleUpdateItem = async (updatedItem) => {
     try {
+      
       const response = await axios.put(`https://667eaaa0f2cb59c38dc69de2.mockapi.io/finaldata/${updatedItem.id}`, updatedItem);
       setItems(items.map((item) => (item.id === updatedItem.id ? response.data : item)));
       handleCloseModal();
@@ -74,20 +76,18 @@ function UserData() {
         <button className='m-0 text-white bg-cyan-600 px-2 rounded-sm' onClick={() => handleOpenModal()}>Add New</button>
       </div>
       <div className='example_box p-0 text-start rounded-md overflow-hidden'>
-
-
         <div className=''>
           <ItemList items={items} onEdit={handleOpenModal} onDelete={handleDeleteItem} />
         </div>
-
       </div>
       {isModalOpen && (
         <ItemModal
           isOpen={isModalOpen}
           animetion={isAnimating}
           onClose={handleCloseModal}
-          onSubmit={currentItem ? handleUpdateItem : handleCreateItem}
+          userOnSubmit={currentItem ? handleUpdateItem : handleCreateItem}
           currentItem={currentItem}
+          modelid ={userid}
         />
       )}
 

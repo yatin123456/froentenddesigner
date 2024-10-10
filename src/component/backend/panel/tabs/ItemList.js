@@ -30,6 +30,7 @@ function ItemList({ items, onEdit, onDelete }) {
                   <th className="border-zinc-700 border text-white font-light text-sm p-2 text-start">Title</th>
                   <th className="border-zinc-700 border text-white font-light text-sm p-2 text-start">Description</th>
                   <th className="border-zinc-700 border text-white font-light text-sm p-2">Route Link</th>
+                  <th className="border-zinc-700 border text-white font-light text-sm p-2">Skill</th>
                   <th className="border-zinc-700 border text-white font-light text-sm p-2">Status</th>
                 </>
               ) : item.email ? (
@@ -39,7 +40,7 @@ function ItemList({ items, onEdit, onDelete }) {
                   <th className="border-zinc-700 border text-white font-light text-sm p-2">Point</th>
                   <th className="border-zinc-700 border text-white font-light text-sm p-2">Stack</th>
                   <th className="border-zinc-700 border text-white font-light text-sm p-2">Per(%)</th>
-                  <th className="border-zinc-700 border text-white font-light text-sm p-2">Status</th>
+                  <th className="border-zinc-700 border text-white font-light text-sm p-2">Position</th>
                 </>
               ) : (
                 <>
@@ -73,6 +74,12 @@ function ItemList({ items, onEdit, onDelete }) {
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.title}</td>
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwrapdec'>{item.description}</td>
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm '>{item.route}</td>
+                  <td className='border-zinc-700 border p-2 text-gray-400 text-sm text-center'>{item.skill}%</td>
+                  {(item.status === 'active') ? (
+                <td className='border-zinc-700 border p-2 text-gray-400 text-sm text-center'><span className='bg-green-900  w-fit text-[12px] rounded-md px-2  capitalize border border-green-700 text-green-400'>Active</span></td>
+              ) : (
+                <td className='border-zinc-700 border p-2 text-gray-400 text-sm text-center'><span className='text-rose-800 font-semibold bg-rose-400  w-fit text-[12px] rounded-md px-2  capitalize border border-rose-500'>Inactive</span></td>
+              )}
                 </>
               ) : item.email ? (
                 <>
@@ -81,6 +88,11 @@ function ItemList({ items, onEdit, onDelete }) {
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.point}</td>
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.stack}</td>
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.percentage}%</td>
+                  {(item.position === 'active') ? (
+                <td className='border-zinc-700 border p-2 text-gray-400 text-sm text-center'><span className='bg-green-900  w-fit text-[12px] rounded-md px-2  capitalize border border-green-700 text-green-400'>Active</span></td>
+              ) : (
+                <td className='border-zinc-700 border p-2 text-gray-400 text-sm text-center'><span className='text-rose-800 font-semibold bg-rose-400  w-fit text-[12px] rounded-md px-2  capitalize border border-rose-500'>Inactive</span></td>
+              )}
                 </>
               ) : (
                 <>
@@ -92,15 +104,13 @@ function ItemList({ items, onEdit, onDelete }) {
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.per}</td>
                   
                   <td className='border-zinc-700 border p-2 text-gray-400 text-sm textwraptit'>{item.duration}</td>
-
+                  
+                <td className='border-zinc-700 border p-2 text-gray-400 text-sm text-center'><span className='bg-green-900  w-fit text-[12px] rounded-md px-2  capitalize border border-green-700 text-green-400'>Active</span></td>
+              
                 </>
               )}
 
-              {(item.status === 'active') ? (
-                <td className='border-zinc-700 border p-2 text-gray-400 text-sm text-center'><span className='bg-green-900  w-fit text-[12px] rounded-md px-2  capitalize border border-green-700 text-green-400'>Active</span></td>
-              ) : (
-                <td className='border-zinc-700 border p-2 text-gray-400 text-sm text-center'><span className='text-rose-800 font-semibold bg-rose-400  w-fit text-[12px] rounded-md px-2  capitalize border border-rose-500'>Inactive</span></td>
-              )}
+             
 
 
 

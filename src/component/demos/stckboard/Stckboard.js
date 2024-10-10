@@ -54,7 +54,7 @@ function Stckboard(props) {
 
     }
     useEffect(() => {
-        fetch('https://667eaaa0f2cb59c38dc69de2.mockapi.io/mycrudeapp')
+        fetch('https://667eaaa0f2cb59c38dc69de2.mockapi.io/finaldata')
             .then(response => response.json())
             .then(data => {
                 setData(data);

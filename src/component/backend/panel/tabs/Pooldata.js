@@ -10,6 +10,7 @@ function Pooldata() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [poolid , setPoolid] = useState ('poolmodel')
   const fetchItems = async () => {
     try {
       const response = await axios.get("https://66cea862901aab24841f1914.mockapi.io/Poollist");
@@ -74,20 +75,18 @@ function Pooldata() {
         <button className='m-0 text-white bg-cyan-600 px-2 rounded-sm' onClick={() => handleOpenModal()}>Add New</button>
       </div>
       <div className='example_box p-0 text-start rounded-md overflow-hidden'>
-
-
         <div className=''>
           <ItemList items={items} onEdit={handleOpenModal} onDelete={handleDeleteItem} />
         </div>
-
       </div>
       {isModalOpen && (
         <ItemModal
           isOpen={isModalOpen}
           animetion={isAnimating}
           onClose={handleCloseModal}
-          onSubmit={currentItem ? handleUpdateItem : handleCreateItem}
+          poolOnSubmit={currentItem ? handleUpdateItem : handleCreateItem}
           currentItem={currentItem}
+          modelid ={poolid}
         />
       )}
 

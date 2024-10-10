@@ -56,7 +56,9 @@ body {
    background-repeat: no-repeat;
    width: 100%;
 }
-
+.menu_link.active{
+   color: #0891b2;
+}
 
 .textwrapdec,
 .textwraptit{
