@@ -59,15 +59,15 @@ function Stckboard(props) {
             .then(data => {
                 setData(data);
                 const item = data;
-                const filtered = data.filter(item => item.pool == 'TaskOnNFT' && item.stack == 'true');
-                const filtered2 = data.filter(item => item.pool == 'TaskOnNFT2' && item.stack == 'true');
-                const filtered3 = data.filter(item => item.pool == 'LockedPro+' && item.stack == 'true');
-                const filtered4 = data.filter(item => item.pool == 'LockedStarter+' && item.stack == 'true');
-                const filtered5 = data.filter(item => item.pool == 'LockedStater+2' && item.stack == 'true');
-                const filtered6 = data.filter(item => item.pool == 'LockedGainer+' && item.stack == 'true');
-                const filtered7 = data.filter(item => item.pool == 'FuildPro' && item.stack == 'true');
-                const filtered8 = data.filter(item => item.pool == 'FluidStarter' && item.stack == 'true');
-                const filtered9 = data.filter(item => item.pool == 'FuildGainer' && item.stack == 'true');
+                const filtered = data.filter(item => item.pool == 'TaskOnNFT' && item.stack == 'true' && item.position == 'active');
+                const filtered2 = data.filter(item => item.pool == 'TaskOnNFT2' && item.stack == 'true' && item.position == 'active');
+                const filtered3 = data.filter(item => item.pool == 'LockedPro+' && item.stack == 'true' && item.position == 'active');
+                const filtered4 = data.filter(item => item.pool == 'LockedStarter+' && item.stack == 'true' && item.position == 'active');
+                const filtered5 = data.filter(item => item.pool == 'LockedStater+2' && item.stack == 'true' && item.position == 'active');
+                const filtered6 = data.filter(item => item.pool == 'LockedGainer+' && item.stack == 'true' && item.position == 'active');
+                const filtered7 = data.filter(item => item.pool == 'FuildPro' && item.stack == 'true' && item.position == 'active');
+                const filtered8 = data.filter(item => item.pool == 'FluidStarter' && item.stack == 'true' && item.position == 'active');
+                const filtered9 = data.filter(item => item.pool == 'FuildGainer' && item.stack == 'true' && item.position == 'active');
                 setFL(filtered.length);
                 setFL1(filtered2.length);
                 setFL2(filtered3.length);
@@ -321,22 +321,22 @@ function Stckboard(props) {
                                 <div className='flex mt-3'>
                                     <p className='text-white text-xl font-semibold'>+10.0%<span className='text-gray-400 ps-2 text-sm font-light'>APR</span></p>
                                 </div>
-                                <div className={`${(sum7 == 10000 || sum7 > 10000) ? 'opacity-50 relative' : ''}`}>
-                                    <div className={`${(sum7 == 10000 || sum7 > 10000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
+                                <div className={`${(sum7 == 780000 || sum7 > 780000) ? 'opacity-50 relative' : ''}`}>
+                                    <div className={`${(sum7 == 780000 || sum7 > 780000) ? 'flex absolute top-0 left-0 h-full w-full bg-gradient-to-t from-green-600 ... rounded-md' : 'hidden '} `}>
                                         <p className='m-auto text-white'>Pool is Full</p>
                                     </div>
                                     <div className=' flex place-content-between'>
                                         <p className='text-gray-400 text-md'>Pool occupancy </p>
-                                        <span className='text-gray-400 text-sm block'>{(sum7 / 10000 * 100).toFixed(2)}%</span>
+                                        <span className='text-gray-400 text-sm block'>{(sum7 / 780000 * 100).toFixed(2)}%</span>
                                     </div>
                                     <div className='prbar w-[100%] h-1 bg-gray-500 mt-2'>
-                                        <div className={`  h-1 ${(sum7 / 10000 * 100 === '0' || sum7 / 10000 * 100 < '33') ? 'bg-blue-700' : (sum7 / 10000 * 100 === '34' || sum7 / 10000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum7 / 10000 * 100 + '%' }}></div>
+                                        <div className={`  h-1 ${(sum7 / 780000 * 100 === '0' || sum7 / 780000 * 100 < '33') ? 'bg-blue-700' : (sum7 / 780000 * 100 === '34' || sum7 / 780000 * 100 < '66') ? 'bg-green-600' : 'bg-red-600'}`} style={{ width: sum7 / 780000 * 100 + '%' }}></div>
                                     </div>
                                     <div className='flex mt-2'>
-                                        <p className='text-gray-400 text-md'>$ {sum7}  / 10000  </p>
+                                        <p className='text-gray-400 text-md'>$ {sum7}  / 780000  </p>
                                     </div>
                                 </div>
-                                <button className='example_box-btn w-full' name='FuildPro' totalvalue='10000' per='10' onClick={viewall} >View All</button>
+                                <button className='example_box-btn w-full' name='FuildPro' totalvalue='780000' per='10' onClick={viewall} >View All</button>
                             </div>
                         </div>
                         <div className='example_box text-start p-0 overflow-hidden'>

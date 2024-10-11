@@ -30,13 +30,17 @@ function Allparticipent() {
             .then(response => response.json())
             .then(data => {
                 const item = data;
-                const filtered = data.filter(item => item.pool === dname);
+                const filtered = data.filter(item => item.pool === dname && item.stack == 'true' && item.position == 'active');
                 if (Array.isArray(filtered)) {
                     const totalSum = filtered.reduce((acc, item) => acc + (Number(item.point / 100 * item.percentage) || 0), 0);
                     setSum(totalSum);
                     setLoading(false);
                 }
-                setData(filtered, dname);
+                const updatedDataWithNewIDs = filtered.map((item, index) => ({
+                    ...item,
+                    id: index + 1 // Assign a new ID starting from 1
+                }));
+                setData(updatedDataWithNewIDs, dname);
             })
         const fetchData = async () => {
             try {

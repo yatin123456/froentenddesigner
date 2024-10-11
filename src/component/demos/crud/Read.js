@@ -32,7 +32,7 @@ function Read() {
             .then(() => {
                 getData();
             })
-            axios.delete(`https://667eaaa0f2cb59c38dc69de2.mockapi.io/mycrudeapp/${id}`)
+           
         toast.error('you removed this user');
     }
 

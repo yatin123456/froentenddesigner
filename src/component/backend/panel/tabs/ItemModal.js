@@ -227,7 +227,7 @@ function ItemModal({ isOpen, onClose, userOnSubmit,poolOnSubmit ,demoOnSubmit, c
                If you have not taken advantage of stacking. So first you must be an active user.
                 </p>
              
-                {(stack == 'true') ? (
+                {(stack == 'true' && position == 'active') ? (
                         <>
                           <div>
                             < label className='block text-white pt-4 pb-1'>Select A pool </label>
