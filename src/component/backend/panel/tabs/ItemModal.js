@@ -129,7 +129,7 @@ function ItemModal({ isOpen, onClose, userOnSubmit,poolOnSubmit ,demoOnSubmit, c
     };
     const poolSubmit = () => {
       const itemData = {
-        name,totalvalue, status
+        symbol,totalvalue,header
       };
       if (currentItem) {
         poolOnSubmit({ ...currentItem, ...itemData });

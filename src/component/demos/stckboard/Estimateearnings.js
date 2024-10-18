@@ -66,7 +66,7 @@ function Estimateearnings() {
                                                         <img className='w-10' src={coinicon} />
                                                     </div>
                                                     <div>
-                                                        <h3 className='text-white text-xl text-start mb-0'>{item.name}</h3>
+                                                        <h3 className='text-white text-xl text-start mb-0'>{(item.name ? (item.name) : (<p>----</p>))}</h3>
                                                         <p className='m-0 text-sm text-zinc-400 '>APR +{item.per}% | Lock for {item.duration} </p>
                                                     </div>
                                                 </div>

@@ -17,6 +17,9 @@ function Allparticipent() {
     const [sum, setSum] = useState();
     const [filteredData, setFilteredData] = useState([]); // State to hold filtered data
     const [totalPoints, setTotalPoints] = useState(0);
+    const [toggle, setToggle] = useState(false)
+
+
     console.log('totla',fetchedData)
     function getData() {
         axios
@@ -77,6 +80,7 @@ function Allparticipent() {
                                 </span></p>
                             </div>
                         </div>
+                        <div className='text-end'><p onClick={() => setToggle(!toggle)} className='text-white bg-slate-500 rounded-sm w-fit px-2 ms-auto cursor-pointer'> {toggle ? 'Hide Point' : 'Show Point'}</p></div>
                         <div className='stacking_user-bar'>
                             <div className='flex justify-between border-b border-zinc-600 py-3'>
                                 <p className='text-white '># User</p>
@@ -95,11 +99,10 @@ function Allparticipent() {
                                                 {data.map((item) => (
                                                     <div className='flex justify-between border-b border-zinc-600 py-3' key={item.id}>
                                                         <div className='text-white flex items-center'>
-                                                          
-                                                            <p className='flex text-wrap w-5 h-5 rounded-full bg-orange-500  font-semibold text-xs text-center'><span className='m-auto'>{item.id}</span></p>
+                                                            <p className={`flex text-wrap w-5 h-5 rounded-full   font-semibold text-xs text-center ${(item.id) == '1' ? 'bg-green-500' : (item.id) == '2' ? 'bg-orange-500' : (item.id) == '3' ? 'bg-red-500' : 'bg-slate-500'}`}><span className='m-auto'>{item.id}</span></p>
                                                             <p className='ms-2'>{item.name}</p>
                                                         </div>
-                                                        <p className='text-white '>$ {item.point / 100 * item.percentage}</p>
+                                                        <p className={`text-white px-2 relative rounded-md`}>$ {item.point / 100 * item.percentage}<span className={`${toggle == true ? '' : 'bg-slate-700  rounded-md absolute right-0 top-0 w-full h-full  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-90  '}`}></span></p>
 
                                                     </div>
                                                 ))}
