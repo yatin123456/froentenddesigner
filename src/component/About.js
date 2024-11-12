@@ -29,7 +29,7 @@ function About() {
                     <div className='absolute  bottom-20  border border-zinc-300 bg-cyan-600  spiner sm:block hidden'>
                     </div>
                 </div>
-                <div className=''>
+                {/* <div className=''>
                     <p className='bg-orange-900 border-orange-600 rounded-md p-2 text-orange-500 capitalize border'>demo section 1</p>
                 </div>
                 <div className=''>
@@ -37,7 +37,7 @@ function About() {
                 </div>
                 <div className=''>
                     <p className='bg-orange-900 border-orange-600 rounded-md p-2 text-orange-500 capitalize border'>demo section 3</p>
-                </div>
+                </div> */}
                 <div className='what_ido-wrap sm:py-20 py-10 '>
                     <div className='sec_heading'>
                         <h2 className='sm:text-xl md:text-2xl text-white font-semibold w-fit capitalize  '>what i do   <span className='border-b-2 border-zinc-700 block w-full'><span className='w-8 bg-slate-200 border-cyan-600 border absolute'></span></span></h2>
